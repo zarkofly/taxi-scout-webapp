@@ -18,7 +18,7 @@ import {
   XMarkIcon,
   ChevronUpIcon,
 } from "@heroicons/react/24/outline";
-import logo from "../Images/logo.png";
+import logo from "../Images/logo2.png";
 import { Link } from "react-router-dom";
 import { m } from "framer-motion";
 import LanguageSwitcher from "./LanguageSwitcher";
