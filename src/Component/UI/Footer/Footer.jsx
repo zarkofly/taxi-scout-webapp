@@ -1,5 +1,5 @@
 import { Typography } from "@material-tailwind/react";
-import logo from "../../../Images/logo.png"
+import logo from "../../../Images/logo2.png"
 import { Link } from "react-router-dom";
  
 const LINKS = [
