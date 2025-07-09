@@ -147,6 +147,7 @@ const packagePrices = {
       const result = reader.result;
       console.log(`Base64 length for ${type}:`, result.length);
       switch (type) {
+        
         case "driver":
           setDriverImage(result);
           break;
@@ -160,8 +161,10 @@ const packagePrices = {
             setTrafficLicenseImage(result);
             break;
             case "companyImage":
+              setCompanyImage(result); // Ispravljeno
               setImage(result);
               break;
+              
         default:
           break;
       }
@@ -288,6 +291,7 @@ const packagePrices = {
     if (!mobile) newErrors.mobile = t("field_required");
     if (!postalCode) newErrors.postalCode = t("field_required");
     if (!image) newErrors.image = t("field_required");
+    console.log("Validation errors:", newErrors); // Dodajte ovo
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -769,7 +773,7 @@ const packagePrices = {
                 id="text1"
                 onClick={handleTaxiClick}
               >
-                Wählen
+              {t('select' )}
               </div>
               <div className="line" id="line2"></div>
 
@@ -801,7 +805,8 @@ const packagePrices = {
                 id="text2"
                 onClick={goToInfo}
               >
-                Firmeninfo
+                 {t('company_info' )}
+           
               </div>
               <div className="line"></div>
 
@@ -833,7 +838,8 @@ const packagePrices = {
                 id="text3"
                 onClick={goToDriver}
               >
-                Fahrerdaten
+                {t('driver_data' )}
+                
               </div>
               <div className="line"></div>
 
@@ -865,7 +871,8 @@ const packagePrices = {
                 id="text4"
                 onClick={goToVehicle}
               >
-                Fahrzeugdaten
+                   {t('vehicle_data')}
+               
               </div>
               <div className="line"></div>
 
@@ -896,7 +903,8 @@ const packagePrices = {
                 className={`label ${activeStep >= 5 ? "text-green-500" : ""}`}
                 id="text5"
               >
-                Fahrpreise
+                {t('fares')}
+         
               </div>
             </div>
           </div>
@@ -913,7 +921,7 @@ const packagePrices = {
             <div className="button-container">
               <button className="signup-button" onClick={goToUser}>
                 <img src={img} alt="User" className="button-icon" />
-                Fahrgast
+                {t("passenger")}
               </button>
               <button
                 className="signup-button"
@@ -922,7 +930,7 @@ const packagePrices = {
                 }}
               >
                 <img src={img1} alt="Taxi Company" className="button-icon" />
-                Taxiunternehmen
+                {t("taxi_company")}
               </button>
             </div>
           </div>
@@ -931,34 +939,34 @@ const packagePrices = {
         {showPackage && (
          <div className="rounded-div" id="paket"  style={{ height: '100%' }}>
   <section className="intro">
-    <h1>TaxiScout24 – Paketübersicht (CHF)</h1>
-    <p>Attraktive Preise und klare Vorteile für Schweizer Taxiunternehmen.</p>
-    <p><strong>TaxiScout24</strong> – Die Schweizer Plattform für smarte Taxiunternehmen</p>
-    <p>Mehr Fahrgäste, weniger Leerlauf. Verwalten Sie Fahrer, Fahrzeuge und Bestellungen – alles in einer App.</p>
-    <p><strong>Jetzt starten – und mit Jahreszahlung bis zu CHF 600.– sparen!</strong></p>
+    <h1>TaxiScout24 –  {t("reg3_text")} (CHF)</h1>
+    <p>{t("reg4_text")}</p>
+    <p><strong>TaxiScout24</strong> – {t("reg5_text")}</p>
+    <p>{t("reg6_text")}</p>
+    <p><strong>{t("reg7_text")}</strong></p>
   </section>
 
   <section className="pricing">
     {/* Paket 1: Starter */}
     <div className="plan">
       <h2>Starter 🟢</h2>
-      <p className="price">CHF 1. <span class = "spanclass" >– / Monat</span><br /><span>CHF 1.– / Monat bei <br/> Jahreszahlung (CHF 12.– / Jahr)</span></p>
+      <p className="price">CHF 1. <span class = "spanclass" >– / {t("month")} </span><br /><span>CHF 1.– / {t("plan_price_line2")} <br/>  {t("plan_price_line3")} (CHF 12.– / {t("year")})</span></p>
      
       <ul >
-        <li>✅ 1 Fahrer</li>
-        <li>✅ 1 Fahrzeug</li>
-        <li>✅ App-Zugang</li>
-        <li>❌ Erweiterte Berichte</li>
-        <li>❌ Telefonischer Support</li>
-        <li>❌ Individuelle Einrichtung</li>
-        <li>❌ API / Drittanbieter</li>
+        <li>✅ 1 {t("pricing_text4")}</li>
+        <li>✅ 1 {t("plan_feature_vehicle")}</li>
+        <li>✅  {t("plan_feature_app_access")}</li>
+        <li>❌ {t("plan_feature_no_reports")}</li>
+        <li>❌ {t("plan_feature_no_support")}</li>
+        <li>❌ {t("plan_feature_no_setup")}</li>
+        <li>❌ {t("plan_feature_no_api")}</li>
       </ul >
       <div className="buttons">
   <button className="btn-monthly" onClick={() => { setSelectedPackageId(1); goToInfo(); }}>
-  💳  Monatlich wählen
+  💳  {t("button_monthly")}
   </button>
   <button className="btn-yearly" onClick={() => { setSelectedPackageId(2); goToInfo(); }}>
-  🎁  Jährlich wählen
+  🎁  {t("button_yearly")}
   </button>
 </div>
     </div>
@@ -966,22 +974,22 @@ const packagePrices = {
     {/* Paket 2: Basic */}
     <div className="plan">
       <h2>Basic 🔵</h2>
-      <p className="price">CHF 89.<span class = "spanclass" >– / Monat</span><br /><span>CHF 69.– / Monat bei <br/> Jahreszahlung (CHF 828.– / Jahr)</span></p>
+      <p className="price">CHF 89.<span class = "spanclass" >– / {t("month")}</span><br /><span>CHF 69.– / {t("plan_price_line2")} <br /> {t("plan_price_line3")} (CHF 828.– / {t("year")})</span></p>
       <ul>
-        <li>✅ 5 Fahrer</li>
-        <li>✅ 5 Fahrzeuge</li>
-        <li>✅ App-Zugang</li>
-        <li>✅ Erweiterte Berichte</li>
-        <li>✅ Telefonischer Support</li>
-        <li>❌ Individuelle Einrichtung</li>
-        <li>❌ API / Drittanbieter</li>
+        <li>✅ 5 {t("pricing_text4")}</li>
+        <li>✅ 5 {t("plan_feature_vehicle")}</li>
+        <li>✅ {t("plan_feature_app_access")}</li>
+        <li>✅ {t("plan_feature_no_reports")}</li>
+        <li>✅ {t("plan_feature_no_support")}</li>
+        <li>❌ {t("plan_feature_no_setup")}</li>
+        <li>❌ {t("plan_feature_no_api")}</li>
       </ul>
       <div className="buttons">
   <button className="btn-monthly" onClick={() => { setSelectedPackageId(3); goToInfo(); }}>
-  💳  Monatlich wählen
+  💳  {t("button_monthly")}
   </button>
   <button className="btn-yearly" onClick={() => { setSelectedPackageId(4); goToInfo(); }}>
-  🎁 Jährlich wählen
+  🎁  {t("button_yearly")}
   </button>
 </div>
 </div>
@@ -989,22 +997,22 @@ const packagePrices = {
     {/* Paket 3: Pro */}
     <div className="plan">
       <h2>Pro 🟠</h2>
-      <p className="price">CHF 199.<span class = "spanclass" >– / Monat</span><br /><span>CHF 149.– / Monat bei Jahreszahlung (CHF 1'788.– / Jahr)</span></p>
+      <p className="price">CHF 199.<span class = "spanclass" >– / {t("month")}</span><br /><span>CHF 149.– / {t("plan_price_line2")} <br /> {t("plan_price_line3")} (CHF 1'788.– / {t("year")})</span></p>
       <ul>
-        <li>✅ 20 Fahrer</li>
-        <li>✅ 20 Fahrzeuge</li>
-        <li>✅ App-Zugang</li>
-        <li>✅ Erweiterte Berichte</li>
-        <li>✅ Telefonischer Support</li>
-        <li>✅ Individuelle Einrichtung</li>
-        <li>✅ API / Drittanbieter</li>
+        <li>✅ 20 {t("pricing_text4")}</li>
+        <li>✅ 20 {t("plan_feature_vehicle")}</li>
+        <li>✅ {t("plan_feature_app_access")}</li>
+        <li>✅ {t("plan_feature_no_reports")}</li>
+        <li>✅ {t("plan_feature_no_support")}</li>
+        <li>✅ {t("plan_feature_no_setup")}</li>
+        <li>✅ {t("plan_feature_no_api")}</li>
       </ul>
       <div className="buttons">
   <button className="btn-monthly" onClick={() => { setSelectedPackageId(5); goToInfo(); }}>
-  💳  Monatlich wählen
+  💳  {t("button_monthly")}
   </button>
   <button className="btn-yearly" onClick={() => { setSelectedPackageId(6); goToInfo(); }}>
-  🎁  Jährlich wählen
+  🎁  {t("button_yearly")}
   </button>
 </div>
 
@@ -1013,22 +1021,22 @@ const packagePrices = {
     {/* Paket 4: Enterprise */}
     <div className="plan">
       <h2>Enterprise 🔴</h2>
-      <p className="price">CHF 289.<span class = "spanclass" >– / Monat</span><br /><span>CHF 229.– / Monat bei Jahreszahlung (CHF 2'748.– / Jahr)</span></p>
+      <p className="price">CHF 289.<span class = "spanclass" >– / {t("month")}</span><br /><span>CHF 229.– / {t("plan_price_line2")} <br /> {t("plan_price_line3")} (CHF 2'748.– / {t("year")})</span></p>
       <ul>
-        <li>✅ 99 Fahrer</li>
-        <li>✅ Unbegrenzte Fahrzeuge</li>
-        <li>✅ App-Zugang</li>
-        <li>✅ Erweiterte Berichte</li>
-        <li>✅ Telefonischer Support</li>
-        <li>✅ Individuelle Einrichtung</li>
-        <li>✅ API / Drittanbieter</li>
+        <li>✅ 99 {t("pricing_text4")}</li>
+        <li>✅ {t("unlimited_vehicles")}</li>
+        <li>✅ {t("plan_feature_app_access")}</li>
+        <li>✅ {t("plan_feature_no_reports")}</li>
+        <li>✅ {t("plan_feature_no_support")}</li>
+        <li>✅ {t("plan_feature_no_setup")}</li>
+        <li>✅ {t("plan_feature_no_api")}</li>
       </ul>
       <div className="buttons">
   <button className="btn-monthly" onClick={() => { setSelectedPackageId(7); goToInfo(); }}>
-  💳  Monatlich wählen
+  💳  {t("button_monthly")}
   </button>
   <button className="btn-yearly" onClick={() => { setSelectedPackageId(8); goToInfo(); }}>
-  🎁  Jährlich wählen
+  🎁  {t("button_yearly")}
   </button>
 </div>
     </div>
@@ -1041,9 +1049,9 @@ const packagePrices = {
 {showInfoReg && (
   <div className="rounded-div" id="infoReg">
     <div id="nekrektine2">
-      <div className="title">Izaberite tip registracije</div>
+      <div className="title">{t("reg8_text")}</div>
       <div className="description">
-        Ako ste taksi kompanija, registrujte se za korišćenje naše platforme.
+      {t("reg9_text")}
       </div>
       <div className="form-container p-4 max-w-lg mx-auto bg-white shadow-lg rounded-lg">
         <div className="grid grid-cols-2 gap-4">
@@ -1145,7 +1153,7 @@ const packagePrices = {
           </div>
           <div className="col-span-2 flex items-center gap-4">
             <div className="flex-1">
-              <label className="block mb-1 font-medium">Slika kompanije</label>
+              <label className="block mb-1 font-medium">Logo</label>
               <input
                 type="file"
                 accept="image/jpeg,image/png,image/gif"
@@ -1181,17 +1189,17 @@ const packagePrices = {
         {showInfoDriver && (
           <div className="rounded-div" id="infoDriver">
             <div id="nekrektine2">
-              <div className="title">Fahrerdaten eingeben</div>
+              <div className="title">{t("reg10_text")}</div>
               <div className="description">
-                Bitte geben Sie die Informationen des Taxifahrers ein, einschließlich seines Namens, seiner E-Mail-Adresse, seiner Fahrerlaubnis und anderer relevanter Details.
-              </div>
+              {t("reg11_text")}
+               </div>
               <div className="form-container p-4 max-w-lg mx-auto bg-white shadow-lg rounded-lg">
                 <div className="grid grid-cols-2 gap-4">
                   <div>
                     <input
                       type="text"
                       className={`input-field p-2 border rounded ${errors.driverName ? "border-red-500" : ""}`}
-                      placeholder="Ime"
+                      placeholder={t("name")} 
                       value={driverName}
                       onChange={(e) => setDriverName(e.target.value)}
                     />
@@ -1201,7 +1209,7 @@ const packagePrices = {
                     <input
                       type="email"
                       className={`input-field p-2 border rounded ${errors.driverEmail ? "border-red-500" : ""}`}
-                      placeholder="Email"
+                      placeholder= {t("email")} 
                       value={driverEmail}
                       onChange={(e) => setDriverEmail(e.target.value)}
                     />
@@ -1211,7 +1219,7 @@ const packagePrices = {
                     <input
                       type="text"
                       className={`input-field p-2 border rounded ${errors.driverPhone ? "border-red-500" : ""}`}
-                      placeholder="Broj telefona"
+                      placeholder= {t("mobile")} 
                       value={driverPhone}
                       onChange={(e) => setDriverPhone(e.target.value)}
                     />
@@ -1219,7 +1227,7 @@ const packagePrices = {
                   </div>
                   <div className="col-span-2 flex items-center gap-4">
                     <div className="flex-1">
-                      <label className="block mb-1 font-medium">Slika vozača</label>
+                      <label className="block mb-1 font-medium">{t("driver_picture")}</label>
                       <input
                         type="file"
                         accept="image/jpeg,image/png,image/gif"
@@ -1240,7 +1248,7 @@ const packagePrices = {
                   </div>
                   <div className="col-span-2 flex items-center gap-4">
                     <div className="flex-1">
-                      <label className="block mb-1 font-medium">Dozvola (prednja strana)</label>
+                      <label className="block mb-1 font-medium">{t("reg12_text")}</label>
                       <input
                         type="file"
                         accept="image/jpeg,image/png,image/gif"
@@ -1263,7 +1271,7 @@ const packagePrices = {
                   </div>
                   <div className="col-span-2 flex items-center gap-4">
                     <div className="flex-1">
-                      <label className="block mb-1 font-medium">Dozvola (zadnja strana)</label>
+                      <label className="block mb-1 font-medium">{t("reg13_text")}</label>
                       <input
                         type="file"
                         accept="image/jpeg,image/png,image/gif"
@@ -1301,15 +1309,15 @@ const packagePrices = {
         {showInfoVehicle && (
           <div className="rounded-div" id="infoVehicle">
             <div id="nekrektine2">
-              <div className="title">Fahrzeugdaten</div>
+              <div className="title">{t("reg14_text")}</div>
               <div className="description">
-                Bitte geben Sie alle relevanten Informationen zu dem Fahrzeug ein, das für den Taxidienst verwendet wird.
+              {t("reg15_text")}
               </div>
               <div className="form-container p-4 max-w-lg mx-auto bg-white shadow-lg rounded-lg">
                 <div className="grid grid-cols-1 gap-4">
                   <div className="flex gap-4">
                     <div className="flex-1">
-                      <label className="block mb-1 font-medium">Tip vozila</label>
+                      <label className="block mb-1 font-medium">{t("vehicle_type")}</label>
                       <select
                         value={vehicleType}
                         onChange={(e) => setVehicleType(e.target.value)}
@@ -1317,19 +1325,19 @@ const packagePrices = {
                           errors.vehicleType ? "border-red-500" : ""
                         }`}
                       >
-                        <option value="">Select Vehicle Type</option>
-                        <option value="Car">Car</option>
-                        <option value="Van">Van</option>
-                        <option value="MiniVan">MiniVan</option>
-                        <option value="Handicap Car">Handicap Car</option>
-                        <option value="Limousine">Limousine</option>
-                        <option value="Long Limousine">Long Limousine</option>
-                        <option value="Electric Car">Electric Car</option>
+                       <option value="">{t("select_vehicle_type")}</option>
+      <option value="Car">{t("vehicle_type_car")}</option>
+      <option value="Van">{t("vehicle_type_van")}</option>
+      <option value="MiniVan">{t("vehicle_type_minivan")}</option>
+      <option value="Handicap Car">{t("vehicle_type_handicap_car")}</option>
+      <option value="Limousine">{t("vehicle_type_limousine")}</option>
+      <option value="Long Limousine">{t("vehicle_type_long_limousine")}</option>
+      <option value="Electric Car">{t("vehicle_type_electric_car")}</option>
                       </select>
                       {errors.vehicleType && <p className="text-red-500 text-sm">{errors.vehicleType}</p>}
                     </div>
                     <div className="flex-1">
-                      <label className="block mb-1 font-medium">Broj sedišta</label>
+                      <label className="block mb-1 font-medium">  {t("seats_count")}</label>
                       <input
                         type="number"
                         min="1"
@@ -1343,7 +1351,7 @@ const packagePrices = {
                       {errors.seatsCount && <p className="text-red-500 text-sm">{errors.seatsCount}</p>}
                     </div>
                     <div className="flex-1">
-                      <label className="block mb-1 font-medium">Broj kofera</label>
+                      <label className="block mb-1 font-medium"> {t("luggage_count")}</label>
                       <input
                         type="number"
                         min="1"
@@ -1358,7 +1366,7 @@ const packagePrices = {
                     </div>
                   </div>
                   <div className="col-span-2">
-                    <label className="block mb-1 font-medium">Marka vozila</label>
+                    <label className="block mb-1 font-medium">{t("select_a_car_make")}</label>
                     <select
                       value={carMake}
                       onChange={(e) => setCarMake(e.target.value)}
@@ -1376,7 +1384,7 @@ const packagePrices = {
                     {errors.carMake && <p className="text-red-500 text-sm">{errors.carMake}</p>}
                   </div>
                   <div className="col-span-2">
-                    <label className="block mb-1 font-medium">Opcije</label>
+                    <label className="block mb-1 font-medium">{t("options")}</label>
                     <div className="flex flex-col gap-4 justify-start">
                       <div>
                         <label className="inline-flex items-center">
@@ -1386,7 +1394,7 @@ const packagePrices = {
                             onChange={(e) => setChildSeat(e.target.checked)}
                             className="form-checkbox"
                           />
-                          <span className="ml-2">Sediste za decu</span>
+                          <span className="ml-2">{t("child_seat")}</span>
                         </label>
                       </div>
                       <div>
@@ -1397,7 +1405,7 @@ const packagePrices = {
                             onChange={(e) => setWheelchairAccessible(e.target.checked)}
                             className="form-checkbox"
                           />
-                          <span className="ml-2">Invalidska kolica</span>
+                          <span className="ml-2">{t("wheelchair_accessible")}</span>
                         </label>
                       </div>
                       <div>
@@ -1408,14 +1416,14 @@ const packagePrices = {
                             onChange={(e) => setPetsAllowed(e.target.checked)}
                             className="form-checkbox"
                           />
-                          <span className="ml-2">Kućni ljubimci dozvoljeni</span>
+                          <span className="ml-2">{t("pets_allowed")}</span>
                         </label>
                       </div>
                     </div>
                   </div>
                   <div className="col-span-2 flex items-center gap-4">
                     <div className="flex-1">
-                      <label className="block mb-1 font-medium">Slika saobraćajne dozvole</label>
+                      <label className="block mb-1 font-medium"> {t("traffic_license_image")}</label>
                       <input
                         type="file"
                         accept="image/jpeg,image/png,image/gif"
@@ -1432,7 +1440,7 @@ const packagePrices = {
                     {trafficLicenseImage && (
                       <img
                         src={trafficLicenseImage}
-                        alt="Saobraćajna dozvola"
+                        alt={t("traffic_license_image")}
                         className="w-24 h-24 object-cover rounded-lg border"
                         onError={() => setImageError((prev) => ({ ...prev, trafficLicense: t("failed_to_load_image") }))}
                       />
@@ -1444,7 +1452,7 @@ const packagePrices = {
                     className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition"
                     onClick={goToPrice}
                   >
-                    Dalje
+                     {t("next")}
                   </button>
                 </div>
               </div>
@@ -1455,17 +1463,19 @@ const packagePrices = {
 {showPrice && (
   <div className="rounded-div" id="infoPrice">
     <div id="nekrektine2">
-      <div className="title">Fahrpreise eingeben</div>
+      <div className="title">{t("enter_fares")}</div>
       <div className="description">
-        Tragen Sie hier den Startpreis und den Kilometerpreis für beide Tarife ein, die für Ihren Taxiservice gelten.
-        {selectedPackageId !== 1 && (
-          <p className="mt-2">You will be redirected to Stripe to complete the payment of {packagePrices[selectedPackageId]} EUR.</p>
-        )}
-      </div>
+          {t("fares_description")}
+          {selectedPackageId !== 1 && (
+            <p className="mt-2">
+              {t("stripe_redirect", { amount: packagePrices[selectedPackageId] })}
+            </p>
+          )}
+        </div>
       <div className="form-container p-4 max-w-lg mx-auto bg-white shadow-lg rounded-lg">
               <div className="mb-4">
                   <label className="block text-gray-700 font-semibold mb-2" htmlFor="startCena">
-                    Start Cena
+                  {t("start_price")}
                   </label>
                   <input
                     type="number"
@@ -1474,14 +1484,14 @@ const packagePrices = {
                     className={`w-full border rounded px-3 py-2 focus:outline-none ${
                       errors.startCena ? "border-red-500" : "border-gray-300"
                     }`}
-                    placeholder="Unesite početnu cenu"
+                    placeholder={t("enter_start_price")}
                     value={startCena}
                     onChange={(e) => setStartCena(e.target.value)}
                   />
                   {errors.startCena && <p className="text-red-500 text-sm">{errors.startCena}</p>}
              
                 </div>
-                <h3 className="text-lg font-semibold text-gray-800 mt-6 mb-2">Tarifa 1</h3>
+                <h3 className="text-lg font-semibold text-gray-800 mt-6 mb-2"> {t("tariff", { n: 1 })}</h3>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-4">
                   <div>
                     <input
@@ -1490,7 +1500,7 @@ const packagePrices = {
                       className={`border rounded px-3 py-2 w-full ${
                         errors.cenaTarifa1 ? "border-red-500" : "border-gray-300"
                       }`}
-                      placeholder="Cena Tarife"
+                      placeholder={t("fare_price")}
                       value={cenaTarifa1}
                       onChange={(e) => setCenaTarifa1(e.target.value)}
                     />
@@ -1503,7 +1513,7 @@ const packagePrices = {
                       className={`border rounded px-3 py-2 w-full ${
                         errors.startVremeTarifa1 ? "border-red-500" : "border-gray-300"
                       }`}
-                      placeholder="Start vreme"
+                      placeholder={t("start_time")}
                       value={startVremeTarifa1}
                       onChange={(e) => setStartVremeTarifa1(e.target.value)}
                     />
@@ -1518,7 +1528,7 @@ const packagePrices = {
                       className={`border rounded px-3 py-2 w-full ${
                         errors.krajVremeTarifa1 ? "border-red-500" : "border-gray-300"
                       }`}
-                      placeholder="Kraj vreme"
+                      placeholder={t("end_time")}
                       value={krajVremeTarifa1}
                       onChange={(e) => setKrajVremeTarifa1(e.target.value)}
                     />
@@ -1527,7 +1537,7 @@ const packagePrices = {
                     )}
                   </div>
                 </div>
-                <h3 className="text-lg font-semibold text-gray-800 mt-6 mb-2">Tarifa 2</h3>
+                <h3 className="text-lg font-semibold text-gray-800 mt-6 mb-2">  {t("tariff", { n: 2 })}</h3>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-4">
                   <div>
                     <input
@@ -1536,7 +1546,7 @@ const packagePrices = {
                       className={`border rounded px-3 py-2 w-full ${
                         errors.cenaTarifa2 ? "border-red-500" : "border-gray-300"
                       }`}
-                      placeholder="Cena Tarife"
+                      placeholder={t("fare_price")}
                       value={cenaTarifa2}
                       onChange={(e) => setCenaTarifa2(e.target.value)}
                     />
@@ -1549,7 +1559,7 @@ const packagePrices = {
                       className={`border rounded px-3 py-2 w-full ${
                         errors.startVremeTarifa2 ? "border-red-500" : "border-gray-300"
                       }`}
-                      placeholder="Start vreme"
+                      placeholder={t("start_time")}
                       value={startVremeTarifa2}
                       onChange={(e) => setStartVremeTarifa2(e.target.value)}
                     />
@@ -1564,7 +1574,7 @@ const packagePrices = {
                       className={`border rounded px-3 py-2 w-full ${
                         errors.krajVremeTarifa2 ? "border-red-500" : "border-gray-300"
                       }`}
-                      placeholder="Kraj vreme"
+                      placeholder={t("end_time")}
                       value={krajVremeTarifa2}
                       onChange={(e) => setKrajVremeTarifa2(e.target.value)}
                     />
@@ -1579,7 +1589,7 @@ const packagePrices = {
             onClick={handleCompanyRegistration}
             disabled={isLoadingPayment}
           >
-            {isLoadingPayment ? "Processing..." : t("register")}
+            {isLoadingPayment ? t("processing") : t("register")}
           </button>
         </div>
       </div>
