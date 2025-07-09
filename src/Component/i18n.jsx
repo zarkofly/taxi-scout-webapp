@@ -5,6 +5,7 @@ import { initReactI18next } from 'react-i18next';
 // Import your language translation files
 import en from './locales/en/landing.json';
 import es from './locales/es/landing.json';
+import de from './locales/de/landing.json';
 
 i18n
   .use(initReactI18next)
@@ -15,6 +16,9 @@ i18n
       },
       es: {
         translation: es,
+      },
+      de: {
+        translation: de,
       },
     },
     lng: 'en', // default language
