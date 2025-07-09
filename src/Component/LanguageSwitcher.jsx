@@ -15,7 +15,7 @@ const LanguageSwitcher = () => {
 
 
       <option value ='en'>English</option>
-           <option value ='ge'>German</option>
+           <option value ='de'>German</option>
                 <option value ='es'>Español</option>
         </select>
     </div>
