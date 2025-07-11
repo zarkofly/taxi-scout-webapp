@@ -8,7 +8,16 @@ import { Space } from "antd";
 
 // Initialize Stripe with your public key
 const stripePromise = loadStripe("pk_test_51O9jy1GfF3OAAcfctj2mX8cH68Zy92PlUW0Ougdbcd12z3P6K8UdRIWIkxcaaIbwESILwaqqMBWu4vfKsSCFab6U00Mgfid3sa");
+
+
 const SignupPage = () => {
+  const containerRef = useRef(null);
+
+const scrollToTop = () => {
+  if (containerRef.current) {
+    containerRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+};
   let url = "https://admin.taxiscout24.com/";
   const { t } = useTranslation();
   const [startVremeTarifa1, setStartVremeTarifa1] = useState("07:00");
@@ -267,6 +276,10 @@ const packagePrices = {
     return h1 > h2 || (h1 === h2 && m1 > m2);
   }
   useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [activeStep]);
+  
+  useEffect(() => {
     return () => {
       if (image) URL.revokeObjectURL(image);
       if (trafficLicenseImage) URL.revokeObjectURL(trafficLicenseImage);
@@ -278,7 +291,7 @@ const packagePrices = {
   };
 
   const handleTaxiClick = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+   
     setShowNum(true);
     setShowPackage(true);
     setShowStart(false);
@@ -288,6 +301,7 @@ const packagePrices = {
     setShowInfoDriver(false);
     setShowInfoVehicle(false);
     setShowPrice(false);
+    scrollToTop();
   };
 
   const goToUser = () => {
@@ -315,7 +329,7 @@ const packagePrices = {
   };
 
   const goToInfo = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+   
     setShowNum(true);
     setShowInfoReg(true);
     setShowStart(false);
@@ -324,6 +338,7 @@ const packagePrices = {
     setShowInfoDriver(false);
     setShowInfoVehicle(false);
     setShowPrice(false);
+    scrollToTop();
   };
 
   const validateInfoDriver = () => {
@@ -343,7 +358,8 @@ const packagePrices = {
 
   const goToDriver = () => {
     if (validateInfoReg()) {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      // Scroll na vrh
+
       setShowNum(true);
       setShowInfoReg(false);
       setShowStart(false);
@@ -352,6 +368,7 @@ const packagePrices = {
       setShowInfoVehicle(false);
       setShowPrice(false);
       setActiveStep(2);
+      scrollToTop();
     }
   };
 
@@ -368,7 +385,7 @@ const packagePrices = {
 
   const goToVehicle = () => {
     if (validateInfoDriver()) {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+     
       setShowNum(true);
       setShowInfoReg(false);
       setShowStart(false);
@@ -377,6 +394,7 @@ const packagePrices = {
       setShowInfoVehicle(true);
       setShowPrice(false);
       setActiveStep(3);
+      scrollToTop();
     }
   };
 
@@ -467,7 +485,7 @@ const packagePrices = {
   };
   const goToPrice = () => {
     if (validateInfoVehicle()) {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+     
       setShowNum(true);
       setShowInfoReg(false);
       setShowStart(false);
@@ -476,6 +494,7 @@ const packagePrices = {
       setShowInfoVehicle(false);
       setShowPrice(true);
       setActiveStep(4);
+      scrollToTop();
     }
   };
 
@@ -585,6 +604,7 @@ const packagePrices = {
             }
   
             const stripe = await stripePromise;
+      
             const { error } = await stripe.redirectToCheckout({
               sessionId: paymentResult.id,
             });
@@ -647,6 +667,8 @@ const packagePrices = {
           setOtp("");
           setShowOTPForm(false);
           setShowStart(true);
+          scrollToTop();
+          
           setIsCompanyRegistration(false);
         }
       } else {
@@ -657,11 +679,13 @@ const packagePrices = {
     }
   };
   useEffect(() => {
+
     setActiveStep(0);
     setShowNum(false);
     setShowUser(false);
     setShowPackage(false);
     setShowStart(true);
+    scrollToTop();
     setShowInfoReg(false);
     setShowInfoDriver(false);
     setShowInfoVehicle(false);
@@ -763,7 +787,7 @@ const packagePrices = {
 
   return (
     <>
-      <div className="glavna">
+      <div  ref={containerRef} className="glavna">
         {showNum && (
           <div className="container spad" style={{ marginTop: "100px" }}>
             <div className="container1">
