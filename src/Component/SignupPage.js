@@ -11,6 +11,12 @@ const stripePromise = loadStripe("pk_test_51O9jy1GfF3OAAcfctj2mX8cH68Zy92PlUW0Ou
 const SignupPage = () => {
   let url = "https://admin.taxiscout24.com/";
   const { t } = useTranslation();
+  const [startVremeTarifa1, setStartVremeTarifa1] = useState("07:00");
+const [krajVremeTarifa1, setKrajVremeTarifa1] = useState("18:59");
+
+const [startVremeTarifa2, setStartVremeTarifa2] = useState("19:00");
+const [krajVremeTarifa2, setKrajVremeTarifa2] = useState("06:59");
+
   const [selectedPackageId, setSelectedPackageId] = useState(1);
   const [activeStep, setActiveStep] = useState(0);
   const [isLoadingPayment, setIsLoadingPayment] = useState(false); // New state for payment loading
@@ -45,11 +51,9 @@ const SignupPage = () => {
   const [postalCode, setPostalCode] = useState("");
   const [startCena, setStartCena] = useState("");
   const [cenaTarifa1, setCenaTarifa1] = useState("");
-  const [startVremeTarifa1, setStartVremeTarifa1] = useState("");
-  const [krajVremeTarifa1, setKrajVremeTarifa1] = useState("");
+
   const [cenaTarifa2, setCenaTarifa2] = useState("");
-  const [startVremeTarifa2, setStartVremeTarifa2] = useState("");
-  const [krajVremeTarifa2, setKrajVremeTarifa2] = useState("");
+
   const [showNum, setShowNum] = useState(false);
   const [showUser, setShowUser] = useState(false);
   const [showPackage, setShowPackage] = useState(false);
@@ -248,7 +252,20 @@ const packagePrices = {
       setImageError((prev) => ({ ...prev, userImage: t("invalid_image_data") }));
     }
   };
-
+  useEffect(() => {
+    if (showPrice) {
+      setStartVremeTarifa1("07:00");
+      setKrajVremeTarifa1("18:59");
+      setStartVremeTarifa2("19:00");
+      setKrajVremeTarifa2("06:59");
+    }
+  }, [showPrice]);
+  function isTimeAfter(t1, t2) {
+    // t1 i t2 su stringovi u formatu "HH:MM"
+    const [h1, m1] = t1.split(":").map(Number);
+    const [h2, m2] = t2.split(":").map(Number);
+    return h1 > h2 || (h1 === h2 && m1 > m2);
+  }
   useEffect(() => {
     return () => {
       if (image) URL.revokeObjectURL(image);
@@ -1530,7 +1547,15 @@ const packagePrices = {
                       }`}
                       placeholder={t("end_time")}
                       value={krajVremeTarifa1}
-                      onChange={(e) => setKrajVremeTarifa1(e.target.value)}
+                     
+  onChange={(e) => {
+    const newVal = e.target.value;
+    if (isTimeAfter(newVal, startVremeTarifa2)) {
+      alert("Tarifa 1 ne sme da se preklapa sa Tarifa 2!");
+      return;
+    }
+    setKrajVremeTarifa1(newVal);
+  }}
                     />
                     {errors.krajVremeTarifa1 && (
                       <p className="text-red-500 text-sm">{errors.krajVremeTarifa1}</p>
@@ -1561,7 +1586,15 @@ const packagePrices = {
                       }`}
                       placeholder={t("start_time")}
                       value={startVremeTarifa2}
-                      onChange={(e) => setStartVremeTarifa2(e.target.value)}
+                      onChange={(e) => {
+                        const newVal = e.target.value;
+                        if (isTimeAfter(krajVremeTarifa1, newVal)) {
+                          alert("Tarifa 2 ne sme da počinje pre završetka Tarifa 1!");
+                          return;
+                        }
+                        setStartVremeTarifa2(newVal);
+                      }}
+                      
                     />
                     {errors.startVremeTarifa2 && (
                       <p className="text-red-500 text-sm">{errors.startVremeTarifa2}</p>
