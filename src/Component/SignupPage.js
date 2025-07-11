@@ -1295,7 +1295,7 @@ const packagePrices = {
                 </div>
                 <div className="mt-6 flex justify-end">
                   <button
-                    className="bg-blue Organize-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition"
+                     className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition"
                     onClick={goToVehicle}
                   >
                     {t("next")}
