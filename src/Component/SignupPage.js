@@ -278,6 +278,7 @@ const packagePrices = {
   };
 
   const handleTaxiClick = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
     setShowNum(true);
     setShowPackage(true);
     setShowStart(false);
@@ -314,6 +315,7 @@ const packagePrices = {
   };
 
   const goToInfo = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
     setShowNum(true);
     setShowInfoReg(true);
     setShowStart(false);
@@ -341,6 +343,7 @@ const packagePrices = {
 
   const goToDriver = () => {
     if (validateInfoReg()) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
       setShowNum(true);
       setShowInfoReg(false);
       setShowStart(false);
@@ -365,6 +368,7 @@ const packagePrices = {
 
   const goToVehicle = () => {
     if (validateInfoDriver()) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
       setShowNum(true);
       setShowInfoReg(false);
       setShowStart(false);
@@ -463,6 +467,7 @@ const packagePrices = {
   };
   const goToPrice = () => {
     if (validateInfoVehicle()) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
       setShowNum(true);
       setShowInfoReg(false);
       setShowStart(false);
