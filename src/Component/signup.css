@@ -831,6 +831,7 @@ align-items: flex-start;
 
 .glavna{
     justify-items: center;
+    overflow-y: auto;
 }
 .button-container {
     display: flex;
@@ -1168,6 +1169,9 @@ body {
   
   /* Mobilni prikaz */
   @media (max-width: 768px) {
+    .signup-button {
+width: 100%;
+    }
     .spad {
       display:  none;
     }
