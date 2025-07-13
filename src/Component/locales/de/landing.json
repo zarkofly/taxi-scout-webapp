@@ -289,7 +289,7 @@
   "traffic_license_image": "Führerscheinfoto",
   "enter_fares": "Tarife eingeben",
   "fares_description": "Geben Sie Ihren Grundpreis und den Kilometerpreis für beide Tarife ein, die für Ihren Taxidienst gelten.",
-  "stripe_redirect": "Sie werden zu Stripe weitergeleitet, um die Zahlung von {{amount}} EUR abzuschließen.",
+  "stripe_redirect": "Sie werden zu Stripe weitergeleitet, um die Zahlung von {{amount}} CHF abzuschließen.",
   "start_price": "Grundpreis",
   "enter_start_price": "Grundpreis eingeben",
   "tariff": "Tarif {{n}}",
