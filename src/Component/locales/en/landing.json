@@ -308,7 +308,8 @@
   "reg21_text" : "Verify OTP",
   "title_user": "Register as a Passenger",
     "desc_user": "Create an account to quickly and easily book taxi rides via our website and mobile app.",
-    "password_too_short": "Password too short"
+    "password_too_short": "Password too short",
+   "email_verified_successfully" : "Email verified successfully!"
 
 
 
