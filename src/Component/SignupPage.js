@@ -3,6 +3,7 @@ import "./signup.css";
 import img from "../Images/user_passanger.png";
 import img1 from "../Images/logo2.png";
 import { useTranslation } from "react-i18next";
+import i18n from './i18n'; // Adjust the path to your i18n.js file
 import { loadStripe } from "@stripe/stripe-js"; // Import Stripe
 import { Space } from "antd";
 
@@ -322,6 +323,7 @@ const packagePrices = {
     if (!password) newErrors.password = t("field_required");
     if (!confirmPassword) newErrors.confirmPassword = t("field_required");
     if (password !== confirmPassword) newErrors.confirmPassword = t("passwords_must_match");
+    if (password && password.length < 8) newErrors.password = t("password_too_short");
     if (!selectedState) newErrors.selectedState = t("field_required");
     if (!address) newErrors.address = t("field_required");
     if (!mobile) newErrors.mobile = t("field_required");
@@ -422,6 +424,7 @@ const packagePrices = {
   
     const companyData = {
       action: "register",
+      language: i18n.language,
       companyName,
       package_id: selectedPackageId,
       contactPerson,
@@ -476,7 +479,7 @@ const packagePrices = {
   
       const result = await response.json();
       if (result.message) {
-        alert("OTP sent to your email. Please verify.");
+        alert(t("reg20_text"));
         setShowOTPForm(true);
         setShowPrice(false);
         setIsCompanyRegistration(true);
@@ -509,6 +512,8 @@ const packagePrices = {
     if (!userPassword) newErrors.userPassword = t("field_required");
     if (!userConfirmPassword) newErrors.userConfirmPassword = t("field_required");
     if (userPassword !== userConfirmPassword) newErrors.userConfirmPassword = t("passwords_must_match");
+    if (userPassword && userPassword.length < 8) newErrors.userPassword = t("password_too_short");
+
     if (!selectedCountry) newErrors.selectedCountry = t("field_required");
     if (!userMobile) newErrors.userMobile = t("field_required");
     if (!userProfilePicture) newErrors.userProfilePicture = t("field_required");
@@ -1139,6 +1144,7 @@ const packagePrices = {
             <input
               type="password"
               className={`input-field p-2 border rounded ${errors.password ? "border-red-500" : ""}`}
+              minLength={8}
               placeholder={t("password")}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
@@ -1150,6 +1156,7 @@ const packagePrices = {
               type="password"
               className={`input-field p-2 border rounded ${errors.confirmPassword ? "border-red-500" : ""}`}
               placeholder={t("cpassword")}
+                minLength={8}
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
             />
@@ -1666,9 +1673,9 @@ const packagePrices = {
         {showUser && (
           <div className="rounded-div" id="infoUser" style={{ marginTop: "100px" }}>
             <div id="nekrektine2">
-              <div className="title">Registrierungstyp auswählen</div>
+              <div className="title"> {t("title_user")}</div>
               <div className="description">
-                Wenn Sie ein Taxiunternehmen sind, registrieren Sie sich für die Nutzung unserer Plattform.
+               {t("desc_user")}
               </div>
               <div className="form-container p-4 max-w-lg mx-auto bg-white shadow-lg rounded-lg">
                 <div className="grid grid-cols-2 gap-4">
@@ -1723,6 +1730,8 @@ const packagePrices = {
                       id="countrySelect"
                       value={selectedCountry}
                       onChange={(e) => setSelectedCountry(e.target.value)}
+                      style={{ width: "100%" }}
+
                       className={`input-field p-2 border rounded ${
                         userErrors.selectedCountry ? "border-red-500" : ""
                       }`}
@@ -1780,7 +1789,7 @@ const packagePrices = {
                     className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition"
                     onClick={handleUserRegistration}
                   >
-                    Registruj User
+                    {t("register")}
                   </button>
                 </div>
               </div>
@@ -1791,16 +1800,16 @@ const packagePrices = {
         {showOTPForm && (
           <div className="rounded-div" id="otpForm" style={{ marginTop: "100px" }}>
             <div id="nekrektine2">
-              <div className="title">Verify Your Email</div>
+              <div className="title">{t("reg16_text")}</div>
               <div className="description">
-                An OTP has been sent to {isCompanyRegistration ? email : userEmail}. Please enter the 6-digit code below to verify your email.
+              {t("reg17_text")} {isCompanyRegistration ? email : userEmail}. {t("reg18_text")}
               </div>
               <div className="form-container p-4 max-w-lg mx-auto bg-white shadow-lg rounded-lg">
                 <div className="mb-4">
                   <input
                     type="text"
                     className={`input-field p-2 border rounded w-full ${otpError ? "border-red-500" : ""}`}
-                    placeholder="Enter 6-digit OTP"
+                    placeholder= {t("reg19_text")}
                     value={otp}
                     onChange={(e) => {
                       setOtp(e.target.value);
@@ -1815,7 +1824,7 @@ const packagePrices = {
                     className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition"
                     onClick={handleOTPVerification}
                   >
-                    Verify OTP
+                    {t("reg21_text")}
                   </button>
                 </div>
               </div>
