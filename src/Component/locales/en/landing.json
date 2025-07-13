@@ -292,7 +292,7 @@
   "traffic_license_image": "Traffic license image",
   "enter_fares": "Enter fares",
   "fares_description": "Enter your base fare and per‑kilometer rate for both tariffs that apply to your taxi service.",
-  "stripe_redirect": "You will be redirected to Stripe to complete the payment of {{amount}} EUR.",
+  "stripe_redirect": "You will be redirected to Stripe to complete the payment of {{amount}} CHF.",
   "start_price": "Start price",
   "enter_start_price": "Enter start price",
   "tariff": "Tariff {{n}}",
