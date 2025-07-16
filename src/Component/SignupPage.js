@@ -608,6 +608,7 @@ const packagePrices = {
                contact: contactPerson,
                 mob: mobile,
                 adress: address,
+                language: i18n.language,
               }),
             });
   
