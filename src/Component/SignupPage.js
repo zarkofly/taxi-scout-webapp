@@ -593,7 +593,7 @@ const packagePrices = {
         if (isCompanyRegistration && selectedPackageId !== 0) {
           setIsLoadingPayment(true);
           try {
-            const paymentResponse = await fetch("https://taxiscout.ch/zarkoPHP/create-checkout-session.php", {
+            const paymentResponse = await fetch("https://admin.taxiscout24.com/storage/create-checkout-session.php", {
               method: "POST",
               headers: {
                 "Content-Type": "application/json",
