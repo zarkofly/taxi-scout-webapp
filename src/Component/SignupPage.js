@@ -604,6 +604,10 @@ const packagePrices = {
                 email: email, // Email za identifikaciju korisnika
                     driverEmail: driverEmail,
                 password: password,
+                   name: companyName,
+               contact: contactPerson,
+                mob: mobile,
+                adress: address,
               }),
             });
   
