@@ -587,7 +587,8 @@ const packagePrices = {
   
       const result = await response.json();
       if (result.message) {
-        alert("Email verified successfully!");
+          alert(t("email_verified_successfully"));
+  
   
         // Ako je company registration i paket nije besplatan (2, 3, ili 4), pokreni Stripe plaćanje
         if (isCompanyRegistration && selectedPackageId !== 0) {
