@@ -602,6 +602,8 @@ const packagePrices = {
                 cena: packagePrices[selectedPackageId],
                 packageId: selectedPackageId,
                 email: email, // Email za identifikaciju korisnika
+                    driverEmail: driverEmail,
+                password: password,
               }),
             });
   
