@@ -587,8 +587,7 @@ const packagePrices = {
   
       const result = await response.json();
       if (result.message) {
-          alert(t("email_verified_successfully"));
-  
+        alert(t("email_verified_successfully"));
   
         // Ako je company registration i paket nije besplatan (2, 3, ili 4), pokreni Stripe plaćanje
         if (isCompanyRegistration && selectedPackageId !== 0) {
@@ -603,9 +602,9 @@ const packagePrices = {
                 cena: packagePrices[selectedPackageId],
                 packageId: selectedPackageId,
                 email: email, // Email za identifikaciju korisnika
-                    driverEmail: driverEmail,
+                driverEmail: driverEmail,
                 password: password,
-                   name: companyName,
+                name: companyName,
                contact: contactPerson,
                 mob: mobile,
                 adress: address,
@@ -806,7 +805,7 @@ const packagePrices = {
     <>
       <div  ref={containerRef} className="glavna">
         {showNum && (
-          <div className="container spad" style={{ marginTop: "100px" }}>
+          <div className="container spad" style={{ marginTop: "10px" }}>
             <div className="container1">
               <div
                 className={`circle ${activeStep >= 1 ? "completed" : "first-circle"}`}
