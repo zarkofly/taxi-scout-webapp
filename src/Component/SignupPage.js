@@ -26,7 +26,8 @@ const [krajVremeTarifa1, setKrajVremeTarifa1] = useState("18:59");
 
 const [startVremeTarifa2, setStartVremeTarifa2] = useState("19:00");
 const [krajVremeTarifa2, setKrajVremeTarifa2] = useState("06:59");
-
+const [isCheckingEmail, setIsCheckingEmail] = useState(false);
+const [isCheckingDriverEmail, setIsCheckingDriverEmail] = useState(false);
   const [selectedPackageId, setSelectedPackageId] = useState(1);
   const [activeStep, setActiveStep] = useState(0);
   const [isLoadingPayment, setIsLoadingPayment] = useState(false); // New state for payment loading
@@ -40,8 +41,8 @@ const [krajVremeTarifa2, setKrajVremeTarifa2] = useState("06:59");
   const [selectedCountry, setSelectedCountry] = useState("");
   const [countries, setCountries] = useState([]);
   const [vehicleType, setVehicleType] = useState("");
-  const [seatsCount, setSeatsCount] = useState("");
-  const [luggageCount, setLuggageCount] = useState("");
+  const [seatsCount, setSeatsCount] = useState(4);
+  const [luggageCount, setLuggageCount] = useState(4);
   const [childSeat, setChildSeat] = useState(false);
   const [wheelchairAccessible, setWheelchairAccessible] = useState(false);
   const [petsAllowed, setPetsAllowed] = useState(false);
@@ -59,10 +60,10 @@ const [krajVremeTarifa2, setKrajVremeTarifa2] = useState("06:59");
   const [address, setAddress] = useState("");
   const [mobile, setMobile] = useState("");
   const [postalCode, setPostalCode] = useState("");
-  const [startCena, setStartCena] = useState("");
-  const [cenaTarifa1, setCenaTarifa1] = useState("");
+  const [startCena, setStartCena] = useState(3);
+  const [cenaTarifa1, setCenaTarifa1] = useState(3);
 
-  const [cenaTarifa2, setCenaTarifa2] = useState("");
+  const [cenaTarifa2, setCenaTarifa2] = useState(4);
 
   const [showNum, setShowNum] = useState(false);
   const [showUser, setShowUser] = useState(false);
@@ -272,6 +273,11 @@ const packagePrices = {
       setKrajVremeTarifa1("18:59");
       setStartVremeTarifa2("19:00");
       setKrajVremeTarifa2("06:59");
+      setLuggageCount(4);
+      setSeatsCount(4);
+      setStartCena(3);
+      setCenaTarifa1(3);
+      setCenaTarifa2(4);
     }
   }, [showPrice]);
   function isTimeAfter(t1, t2) {
@@ -315,25 +321,108 @@ const packagePrices = {
     setIsCompanyRegistration(false);
   };
 
-  const validateInfoReg = () => {
-    const newErrors = {};
-    if (!companyName) newErrors.companyName = t("field_required");
-    if (!contactPerson) newErrors.contactPerson = t("field_required");
-    if (!email) newErrors.email = t("field_required");
-    if (!password) newErrors.password = t("field_required");
-    if (!confirmPassword) newErrors.confirmPassword = t("field_required");
-    if (password !== confirmPassword) newErrors.confirmPassword = t("passwords_must_match");
-    if (password && password.length < 8) newErrors.password = t("password_too_short");
-    if (!selectedState) newErrors.selectedState = t("field_required");
-    if (!address) newErrors.address = t("field_required");
-    if (!mobile) newErrors.mobile = t("field_required");
-    if (!postalCode) newErrors.postalCode = t("field_required");
-    if (!image) newErrors.image = t("field_required");
-    console.log("Validation errors:", newErrors); // Dodajte ovo
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
+  // Ažurirana funkcija checkDriverEmailExists
+const checkDriverEmailExists = async (driverEmail) => {
+  setIsCheckingDriverEmail(true); // Dodaj novu promenljivu stanja za driverEmail
+  console.log("Checking driverEmail:", driverEmail);
+  try {
+    const response = await fetch("https://admin.taxiscout24.com/storage/check-email.php", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email: driverEmail.trim().toLowerCase() }),
+    });
 
+    if (!response.ok) {
+      console.error("API request failed with status:", response.status, response.statusText);
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+
+    const result = await response.json();
+    console.log("API response for driverEmail check:", result);
+
+    if (typeof result.exists !== "boolean") {
+      console.error("Unexpected API response format:", result);
+      throw new Error("Invalid API response format");
+    }
+
+    return result.exists;
+  } catch (error) {
+    console.error("Error during driverEmail check:", error.message);
+    throw error;
+  } finally {
+    setIsCheckingDriverEmail(false);
+  }
+};
+ // Ažurirana funkcija checkEmailExists
+const checkEmailExists = async (email) => {
+  setIsCheckingEmail(true);
+  try {
+    const response = await fetch("https://admin.taxiscout24.com/storage/check-email.php", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email }),
+    });
+
+    if (!response.ok) {
+      console.error("API request failed with status:", response.status);
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const result = await response.json();
+    console.log("API response for email check:", result); // Loguj odgovor za debagovanje
+
+    // Proveri da li je odgovor u očekivanom formatu
+    if (result.error) {
+      console.error("Greška u API odgovoru:", result.error);
+      return false; // Ako postoji greška u API-ju, ne dozvoli dalje
+    }
+
+    return result.exists === true; // Pretpostavljamo da API vraća { exists: true/false }
+  } catch (error) {
+    console.error("Greška prilikom provere email-a:", error);
+    return false; // U slučaju greške, ne dozvoli dalje
+  } finally {
+    setIsCheckingEmail(false);
+  }
+};
+
+  // Ažurirana funkcija validateInfoReg
+const validateInfoReg = async () => {
+  const newErrors = {};
+  if (!companyName) newErrors.companyName = t("field_required");
+  if (!contactPerson) newErrors.contactPerson = t("field_required");
+  if (!email) newErrors.email = t("field_required");
+  if (!password) newErrors.password = t("field_required");
+  if (!confirmPassword) newErrors.confirmPassword = t("field_required");
+  if (password !== confirmPassword) newErrors.confirmPassword = t("passwords_must_match");
+  if (password && password.length < 8) newErrors.password = t("password_too_short");
+  if (!selectedState) newErrors.selectedState = t("field_required");
+  if (!address) newErrors.address = t("field_required");
+  if (!mobile) newErrors.mobile = t("field_required");
+  if (!postalCode) newErrors.postalCode = t("field_required");
+  if (!image) newErrors.image = t("field_required");
+
+  // Provera email-a samo ako nema drugih grešaka sa email-om
+  if (email && !newErrors.email) {
+    try {
+      const emailExists = await checkEmailExists(email);
+      if (emailExists) {
+        newErrors.email = t("email_already_taken");
+      }
+    } catch (error) {
+      newErrors.email = t("email_check_failed");
+      console.error("Error during email validation:", error);
+    }
+  }
+
+  console.log("Validation errors:", newErrors);
+  setErrors(newErrors);
+  return Object.keys(newErrors).length === 0;
+};
   const goToInfo = () => {
    
     setShowNum(true);
@@ -347,36 +436,61 @@ const packagePrices = {
     scrollToTop();
   };
 
-  const validateInfoDriver = () => {
-    const newErrors = {};
-    if (!driverName) newErrors.driverName = t("field_required");
-    if (!driverEmail) newErrors.driverEmail = t("field_required");
-    if (!driverPhone) newErrors.driverPhone = t("field_required");
-    if (!driverImage) newErrors.driverImage = t("field_required");
-    if (!isValidBase64Image(driverImage)) newErrors.driverImage = t("invalid_image_data");
-    if (!licenseFrontImage) newErrors.licenseFrontImage = t("field_required");
-    if (!isValidBase64Image(licenseFrontImage)) newErrors.licenseFrontImage = t("invalid_image_data");
-    if (!licenseBackImage) newErrors.licenseBackImage = t("field_required");
-    if (!isValidBase64Image(licenseBackImage)) newErrors.licenseBackImage = t("invalid_image_data");
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
+ // Ažurirana funkcija validateInfoDriver (pretpostavljam da postoji ili je nova)
+const validateInfoDriver = async () => {
+  const newErrors = {};
 
-  const goToDriver = () => {
-    if (validateInfoReg()) {
-      // Scroll na vrh
+  // Osnovna validacija polja za driver (prilagodi prema potrebi)
+  if (!driverName) newErrors.driverName = t("field_required"); // Pretpostavljeni polj
+  if (!driverEmail) newErrors.driverEmail = t("field_required");
+  if (!driverPhone) newErrors.driverPhone = t("field_required"); // Pretpostavljeni polj
 
-      setShowNum(true);
-      setShowInfoReg(false);
-      setShowStart(false);
-      setShowPackage(false);
-      setShowInfoDriver(true);
-      setShowInfoVehicle(false);
-      setShowPrice(false);
-      setActiveStep(2);
-      scrollToTop();
+  // Validacija formata driverEmail-a
+  if (driverEmail && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(driverEmail)) {
+    newErrors.driverEmail = t("invalid_email_format");
+  }
+
+  // Provera dupliranog driverEmail-a
+  if (driverEmail && !newErrors.driverEmail) {
+    try {
+      const driverEmailExists = await checkDriverEmailExists(driverEmail);
+      console.log("Driver email exists result:", driverEmailExists);
+      if (driverEmailExists) {
+        newErrors.driverEmail = t("email_already_taken");
+      }
+    } catch (error) {
+      newErrors.driverEmail = t("email_check_failed");
+      console.error("Driver email validation error:", error);
     }
-  };
+  }
+
+  // Provera da email ne sme biti isti kao email kompanije
+  if (email && driverEmail && email.trim().toLowerCase() === driverEmail.trim().toLowerCase()) {
+    newErrors.driverEmail = t("email_same_as_company");
+  }
+
+  console.log("Validation errors for driver:", newErrors);
+  setErrors(newErrors); // Ispravljeno na setDriverErrors umesto setErrors
+  return Object.keys(newErrors).length === 0;
+};
+
+// Ažurirana funkcija goToDriver
+// Ažurirana funkcija goToDriver
+const goToDriver = async () => {
+  const isValid = await validateInfoReg();
+  if (isValid) {
+    setShowNum(true);
+    setShowInfoReg(false);
+    setShowStart(false);
+    setShowPackage(false);
+    setShowInfoDriver(true);
+    setShowInfoVehicle(false);
+    setShowPrice(false);
+    setActiveStep(2);
+    scrollToTop();
+  }
+};
+
 
   const validateInfoVehicle = () => {
     const newErrors = {};
@@ -389,20 +503,25 @@ const packagePrices = {
     return Object.keys(newErrors).length === 0;
   };
 
-  const goToVehicle = () => {
-    if (validateInfoDriver()) {
-     
-      setShowNum(true);
-      setShowInfoReg(false);
-      setShowStart(false);
-      setShowPackage(false);
-      setShowInfoDriver(false);
-      setShowInfoVehicle(true);
-      setShowPrice(false);
-      setActiveStep(3);
-      scrollToTop();
-    }
-  };
+// Ažurirana funkcija goToVehicle (pretpostavljam sledeći korak posle driver-a)
+const goToVehicle = async () => {
+  console.log("Starting goToVehicle");
+  const isValid = await validateInfoDriver();
+  console.log("Validation result for driver:", isValid);
+  if (isValid) {
+    console.log("Proceeding to vehicle info step");
+    setShowNum(true);
+    setShowInfoReg(false);
+    setShowInfoDriver(false);
+    setShowInfoVehicle(true);
+    setShowPrice(false);
+    setActiveStep(3); // Prilagođeno prema vašem koraku
+    scrollToTop();
+  } else {
+    console.log("Validation failed, staying on current step");
+  }
+};
+
 
   const validatePrice = () => {
     const newErrors = {};
@@ -714,8 +833,8 @@ const packagePrices = {
     setLicenseBackImage(null);
     setSelectedCountry("");
     setVehicleType("");
-    setSeatsCount("");
-    setLuggageCount("");
+    setSeatsCount(4);
+    setLuggageCount(4);
     setChildSeat(false);
     setWheelchairAccessible(false);
     setPetsAllowed(false);
@@ -1241,8 +1360,9 @@ const packagePrices = {
           <button
             className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition"
             onClick={goToDriver}
+            disabled={isCheckingEmail}
           >
-            {t("next")}
+           {isCheckingEmail ? t("checking") : t("next")}
           </button>
         </div>
       </div>
@@ -1361,8 +1481,9 @@ const packagePrices = {
                   <button
                      className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition"
                     onClick={goToVehicle}
-                  >
-                    {t("next")}
+                    disabled={isCheckingEmail}
+                    >
+                     {isCheckingEmail ? t("checking") : t("next")}
                   </button>
                 </div>
               </div>
@@ -1406,8 +1527,8 @@ const packagePrices = {
                         type="number"
                         min="1"
                         max="10"
-                        value={seatsCount}
-                        onChange={(e) => setSeatsCount(e.target.value)}
+                        value={seatsCount || 4}
+                        onChange={(e) => setSeatsCount(Number(e.target.value))}
                         className={`input-field p-2 border rounded w-full ${
                           errors.seatsCount ? "border-red-500" : ""
                         }`}
@@ -1420,8 +1541,9 @@ const packagePrices = {
                         type="number"
                         min="1"
                         max="50"
-                        value={luggageCount}
-                        onChange={(e) => setLuggageCount(e.target.value)}
+                        value={luggageCount || 4}
+                        onChange={(e) => setLuggageCount(Number(e.target.value))}
+                    
                         className={`input-field p-2 border rounded w-full ${
                           errors.luggageCount ? "border-red-500" : ""
                         }`}
