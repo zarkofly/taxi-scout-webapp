@@ -1,0 +1,15 @@
+.slika {
+    width: 100%;
+}
+.razmakg {
+    margin-top: 15% !important;
+}
+.velicinaf {
+    font-size: 70px;
+}
+
+@media (max-width: 768px) {
+.w-1\/2 {
+    width: 100%;
+}
+}
