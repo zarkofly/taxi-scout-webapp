@@ -310,7 +310,11 @@
     "desc_user": "Create an account to quickly and easily book taxi rides via our website and mobile app.",
     "password_too_short": "Password too short",
    "email_verified_successfully" : "Email verified successfully!",
-  "email_same_as_company" : "The driver's email address cannot be the same as the company's email address. Please enter a different email."
+  "email_same_as_company" : "The driver's email address cannot be the same as the company's email address. Please enter a different email.",
+  "home_text1": "CUSTOMER",
+"home_text2": "TAXI DRIVER",
+"home_text3": "Consideration of special requests",
+"home_text4": "Register now to use service"
 
 
 
