@@ -22,6 +22,7 @@ import { toast, ToastContainer } from "react-toastify";
 import LoginPopup from "./LoginPopup";
 import "./landing.css";
 
+
 const Landing = () => {
   
   const { t } = useTranslation();
