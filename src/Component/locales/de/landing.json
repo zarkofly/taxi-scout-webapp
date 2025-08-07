@@ -1,11 +1,11 @@
 {
-    
-    "landing.title1.1": "Intelligente Möglichkeit, ein Taxi zu bestellen",
-    "title1.1": "Intelligente Möglichkeit, ein Taxi zu bestellen",
+
+    "landing.title1.1": "TaxiScout24 – Ihre smarte Taxi-Buchung weltweit",
+    "title1.1": "TaxiScout24 – Ihre smarte Taxi-Buchung weltweit",
     "ride": "Fahrt",
     "requestRide": "Fordern Sie jetzt eine Fahrt an",
     "smart_way": "Intelligente Möglichkeit, ein Taxi zu bestellen",
-    "description": "Mit der TaxiScout-App können Sie sicher von Punkt A nach Punkt B reisen – egal, wo Sie sich gerade befinden. Reisen Sie mit einem Rollstuhl oder benötigen Sie anderweitige Hilfe? Kein Problem, wir berücksichtigen Ihre individuellen Wünsche.",
+    "description": "Bestellen Sie Ihr Taxi einfach, schnell und sicher – egal, wo Sie sind. Mit der TaxiScout24-App buchen Sie Ihr Taxi weltweit – ob in Ihrer Heimatstadt oder auf Reisen rund um den Globus. Unsere moderne Plattform verbindet Sie mit zuverlässigen Fahrdiensten überall auf der Welt und sorgt dafür, dass Sie entspannt von A nach B kommen. Barrierefrei und individuell – für jede Fahrt perfekt abgestimmt. Ob Sie mit Rollstuhl reisen, besondere Hilfe benötigen oder individuelle Wünsche haben – TaxiScout24 berücksichtigt alle Anforderungen, um Ihre Fahrt so angenehm wie möglich zu gestalten. Ihre Vorteile mit TaxiScout24: Intelligente Taxi-Buchung rund um den Globus Apps für iOS und Android – jederzeit verfügbar Perfekt für Fahrgäste mit speziellen Bedürfnissen Schnelle, zuverlässige Vermittlung weltweit TaxiScout24 – Ihr globaler Partner für sichere und bequeme Taxifahrten.",
     "doNotCall": "Kein Anruf erforderlich",
     "doNotCallDescription": "Sie mögen es nicht zu telefonieren oder haben keine Zeit, die Nummer zu wählen? Oder haben Sie gerade schlechten Netzempfang? Vielleicht sind Sie auch in einem Meeting und möchten nicht gestört werden? Kein Problem! Sie können Ihr Taxi bequem mit nur wenigen Klicks über unsere App bestellen.",
     "noExtraWaitingTime": "Keine zusätzliche Wartezeit",
@@ -16,8 +16,8 @@
     "specialRequestsDescription": "Müssen Sie ein Taxi zum Bahnhof oder Flughafen bestellen? Benötigen Sie ein Taxi, das für Rollstuhlfahrer geeignet ist? Was auch immer Ihre Situation ist, wir erfüllen Ihre speziellen Wünsche, lassen Sie es uns einfach wissen!",
     "paymentOptions": "Wir akzeptieren Kreditkarten und Barzahlungen",
     "paymentOptionsDescription": "Sie haben ein Taxi bestellt und kein Bargeld? Kein Problem! Sie können ganz einfach mit Ihrer Kreditkarte bezahlen. Unser Zahlungssystem akzeptiert alle Kreditkarten und Barzahlungen.",
-    "toolsandideas": "Lassen Sie uns mehr Tools und Ideen schaffen, die uns zusammenbringen.",
-    "toolsandideasDescription": "Flowbite hilft Ihnen, mit Freunden und Gemeinschaften von Menschen in Kontakt zu treten, die Ihre Interessen teilen. Es ist einfach, sich mit Freunden und Familie zu verbinden und neue Leute kennenzulernen, dank Funktionen wie Gruppen.",
+    "toolsandideas": "Finden Sie die passende App für Ihre Bedürfnisse",
+    "toolsandideasDescription": "Wir bieten Apps für iOS und Android – sowohl für Fahrer als auch für Fahrgäste. Finden Sie heraus, welche App am besten zu Ihnen passt, je nachdem, ob Sie Fahrer oder Fahrgast sind und welches Betriebssystem Sie nutzen.",
     "searchButton": "Suche",
     "company": "Unternehmen",
     "resource": "Ressource",
@@ -112,7 +112,7 @@
   "policy_text10": "Sicherstellung der Sicherheit unserer Website und Dienste",
   "policy_text11": "Einhaltung gesetzlicher Anforderungen",
   "policy_text12": "4. Cookies",
-  "policy_text13": "Wir verwenden Cookies und ähnliche Tracking-Technologien, um Ihre Erfahrung auf unserer Website zu verbessern. Cookies helfen uns, die Leistung der Website zu analysieren, Ihre Präferenzen zu speichern und Inhalte zu personalisieren. Sie können Ihre Cookie-Einstellungen in den Browsereinstellungen verwalten. Weitere Informationen finden Sie in unserer Cookie-Richtlinie.",
+  "policy_text13": "Wir verwenden Cookies ausschließlich zur Unterstützung der grundlegenden Funktionen und zur Verbesserung der Leistung unserer Website. Diese Cookies verfolgen Sie nicht über Apps oder Websites hinweg, und es werden keine personenbezogenen Daten für Werbung oder Profiling verwendet. Sie können Ihre Cookie-Einstellungen in Ihrem Browser verwalten. Weitere Informationen finden Sie in unserer Cookie-Richtlinie.",
   "policy_text14": "5. Datenaustausch und Offenlegung",
   "policy_text15": "Wir geben Ihre personenbezogenen Daten nicht an Dritte weiter oder verkaufen diese, es sei denn, dies ist zur Erbringung unserer Dienste erforderlich oder gesetzlich vorgeschrieben. Wir können Daten teilen mit:",
   "policy_text16": "Vertrauenswürdige Dienstleister, die uns bei der Verwaltung unserer Website unterstützen",
@@ -231,7 +231,7 @@
 "confrim_password" : "Passwort bestätigen",
 "reset_my_password" : "Mein Passwort zurücksetzen",
 "back_to_login" : "Zurück zum Login",
-"next" : "Weiter",
+    "next" : "Weiter",
 "reg1_text": "Registrierungstyp auswählen",
 "reg2_text": "Wenn Sie ein Taxiunternehmen sind, registrieren Sie sich, um unsere Plattform für Fahrten- und Kundenverwaltung zu nutzen. Registrieren Sie sich als Fahrgast, wenn Sie die App nutzen möchten, um Taxis zu buchen und zu verfolgen.",
 "reg3_text" : "Paketübersicht",
@@ -306,13 +306,21 @@
   "reg21_text": "OTP bestätigen",
   "title_user": "Registrieren Sie sich als Fahrgast",
   "desc_user": "Erstellen Sie ein Konto, um Taxifahrten über unsere Website und mobile App schnell und einfach zu buchen.",
-   "password_too_short": "Das Passwort muss mindestens 8 Zeichen lang sein.",
-    "email_verified_successfully": "E-Mail wurde erfolgreich verifiziert!",
-    "email_same_as_company" : "Die E-Mail-Adresse des Fahrers darf nicht mit der E-Mail-Adresse des Unternehmens übereinstimmen. Bitte geben Sie eine andere E-Mail-Adresse ein.",
-    "home_text1": "KUNDE",
-"home_text2": "TAXIFAHRER",
-"home_text3": "Berücksichtigung von Sonderwünschen",
-"home_text4": "Jetzt registrieren, um den Service zu nutzen"
+  "password_too_short": "Das Passwort muss mindestens 8 Zeichen lang sein.",
+  "email_verified_successfully": "E-Mail wurde erfolgreich verifiziert!",
+  "email_already_taken": "Diese E-Mail-Adresse ist bereits vergeben. Bitte geben Sie eine andere ein.",
+"checking": "Überprüfung läuft...",
+"email_same_as_company" : "Die E-Mail-Adresse des Fahrers darf nicht mit der E-Mail-Adresse des Unternehmens übereinstimmen. Bitte geben Sie eine andere E-Mail-Adresse ein.",
+
+"home_text1" : "KUNDE",
+"home_text2" : "TAXIFAHRER",
+"home_text3" : "Berücksichtigung besonderer Wünsche",
+"home_text4" : "Jetzt registrieren, um den Service zu nutzen"
+
+
+    
+
+
 
 
 
