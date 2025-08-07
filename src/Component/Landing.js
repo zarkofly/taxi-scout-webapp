@@ -14,6 +14,13 @@ import bg_4 from "../Images/IMG-20241027-WA0004.jpg";
 import bg_5 from "../Images/serve_globally2.jpg";
 import bg_22 from "../Images/widget1img1.jpg";
 import bg_11 from "../Images/widget1img2.jpg";
+import bg_01 from "../Images/slika1.jpg";
+import bg_31 from "../Images/slika2.jpg";
+import bg_21 from "../Images/slika3.jpg";
+import city from "../Images/footer_city.png";
+import app_store from "../Images/app-store-live.jpg";
+import google_play from "../Images/play-store-live.jpg";
+
 import bgImage from "../Images/map_bg.jpg";
 import ChatPopup from "./chatPopup";
 import AppDownloadButtons from "./AppDownloadButtons";
@@ -21,7 +28,6 @@ import { useTranslation } from "react-i18next";
 import { toast, ToastContainer } from "react-toastify";
 import LoginPopup from "./LoginPopup";
 import "./landing.css";
-
 
 const Landing = () => {
   
@@ -60,6 +66,34 @@ const Landing = () => {
   const handleRedirect = () => {
     token != null || undefined ? history("/home") : history("/login");
   };
+  const content = [
+    {
+      number: "01",
+      title: t("doNotCall"),
+      text: t("doNotCallDescription")
+    },
+    {
+      number: "02",
+      title: t("noExtraWaitingTime"),
+      text: t("noExtraWaitingTimeDescription")
+    },
+    {
+      number: "03",
+      title: t("clearAndTransparent"),
+      text: t("clearAndTransparentDescription")
+    },
+    {
+      number: "04",
+      title: t("specialRequests"),
+      text: t("specialRequestsDescription")
+    },
+    {
+      number: "05",
+      title: t("paymentOptions"),
+      text: t("paymentOptionsDescription")
+    }
+  ];
+  
 
   return (
     <>
@@ -125,14 +159,26 @@ const Landing = () => {
           </div>
 
           <div
-            className="hidden xl:flex items-center justify-center xl:w-1/2"
+            className="hidden xl:block items-center justify-center xl:w-1/2"
           >
             <img
               className="rounded-lg w-3/5 slika"
               
               src={bg_1}
             ></img>
+         <div className="flex flex-row justify-center items-center gap-4">
+  <a href="https://play.google.com/store/apps/details?id=com.taxiscout.driver" target="_blank" rel="noopener noreferrer">
+    <img className="p-0 m-0 w-40 sm:w-52 h-fit hover:cursor-pointer" src={google_play} alt="Google Play Store" />
+  </a>
+  <a href="https://apps.apple.com/ch/app/taxiscout24-fahrer-mehrfahrten/id6736903762" target="_blank" rel="noopener noreferrer">
+  <img className="p-0 m-0 w-40 sm:w-52 h-fit hover:cursor-pointer" src={app_store} alt="App Store" />
+  </a>
+</div>
+
           </div>
+
+
+
         </div>
 
         {/* New Widget Section */}
@@ -188,83 +234,101 @@ const Landing = () => {
     </div>
   </div>
 </div>
-        <div className="bg-gray-100 pt-3 sm:pt-4 rounded-2xl flex flex-col justify-center items-center"  style={{ backgroundImage: `url(${bgImage})` }}>
-          
-          <div className="px-0 sm:px-20">
-            <h1 className="uppercase font-semibold text-lg sm:text-xl md:text-2xl lg:text-4xl">
-              {t("smart_way")}
-            </h1>
-            {/* Rest of the existing content remains unchanged */}
-            <div className="px-3 pt-0 gap-3 sm:container flex justify-center items-center sm:pt-3 pb-3 sm:gap-4">
-              <div className="w-50 flex justify-center">
-                <img className="rounded-xl w-96 aspect-square" src={bg_2}></img>
-              </div>
-              <div className="w-50 flex flex-col justify-center items-center">
-                <h1 className="font-bold text-sm sm:text-xl md:text-2xl lg:text-4xl">
-                  {t("doNotCall")}
-                </h1>
-                <p className="px-0 text-justify text-xs sm:px-20 sm:text-md md:text-xl lg:px-10 lg:text-xl">
-                  {t("doNotCallDescription")}
-                </p>
-              </div>
+<div
+  className="bg-gray-100 pt-3 sm:pt-4 rounded-2xl flex flex-col justify-center items-center"
+  style={{ backgroundImage: `url(${bgImage})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
+>
+ <div className="max-w-8xl w-full px-6 py-20 text-black space-y-28 ">
+
+
+  {/* Gornji red – 3 kolone */}
+  <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:w-5/5 mx-[15%]">
+
+
+      {[0, 1, 2].map((i) => (
+        <div key={i} className="relative text-center">
+          <div className="relative">
+            <div className="text-9xl font-extrabold text-[#fae914]">
+              {content[i].number}
             </div>
-            <div className="px-3 pt-0 gap-3 sm:container flex justify-center items-center sm:pt-3 pb-3 sm:gap-4">
-            
-              <div className="w-50 flex flex-col justify-center items-center">
-                <h1 className="font-bold text-sm sm:text-xl md:text-2xl lg:text-4xl">
-                  {t("doNotCall")}
-                </h1>
-                <p className="px-0 text-justify text-xs sm:px-20 sm:text-md md:text-xl lg:px-10 lg:text-xl">
-                  {t("doNotCallDescription")}
-                </p>
-              </div>
-              <div className="w-50 flex justify-center">
-                <img className="rounded-xl w-96 aspect-square" src={bg_2}></img>
-              </div>
-            </div>
-            <div className="px-3 pt-0 gap-3 sm:container flex justify-center items-center sm:pt-3 pb-3 sm:gap-4">
-              <div className="w-50 flex justify-center">
-                <img className="rounded-xl w-96 aspect-square" src={bg_2}></img>
-              </div>
-              <div className="w-50 flex flex-col justify-center items-center">
-                <h1 className="font-bold text-sm sm:text-xl md:text-2xl lg:text-4xl">
-                  {t("doNotCall")}
-                </h1>
-                <p className="px-0 text-justify text-xs sm:px-20 sm:text-md md:text-xl lg:px-10 lg:text-xl">
-                  {t("doNotCallDescription")}
-                </p>
-              </div>
-            </div>
-            <div className="px-3 pt-0 gap-3 sm:container flex justify-center items-center sm:pt-3 pb-3 sm:gap-4">
-            
-            <div className="w-50 flex flex-col justify-center items-center">
-              <h1 className="font-bold text-sm sm:text-xl md:text-2xl lg:text-4xl">
-                {t("doNotCall")}
-              </h1>
-              <p className="px-0 text-justify text-xs sm:px-20 sm:text-md md:text-xl lg:px-10 lg:text-xl">
-                {t("doNotCallDescription")}
-              </p>
-            </div>
-            <div className="w-50 flex justify-center">
-              <img className="rounded-xl w-96 aspect-square" src={bg_2}></img>
-            </div>
+            <h3 className="absolute inset-0 flex items-center justify-center font-bold uppercase text-[19px] text-black whitespace-nowrap px-2">
+  {content[i].title}
+</h3>
+
+
           </div>
-          <div className="px-3 pt-0 gap-3 sm:container flex justify-center items-center sm:pt-3 pb-3 sm:gap-4">
-              <div className="w-50 flex justify-center">
-                <img className="rounded-xl w-96 aspect-square" src={bg_2}></img>
-              </div>
-              <div className="w-50 flex flex-col justify-center items-center">
-                <h1 className="font-bold text-sm sm:text-xl md:text-2xl lg:text-4xl">
-                  {t("doNotCall")}
-                </h1>
-                <p className="px-0 text-justify text-xs sm:px-20 sm:text-md md:text-xl lg:px-10 lg:text-xl">
-                  {t("doNotCallDescription")}
-                </p>
-              </div>
-            </div>
-            {/* ... (other sections remain unchanged) */}
-          </div>
+          <p className="mt-8 text-base">{content[i].text}</p>
         </div>
+      ))}
+    </div>
+
+{/* Donji red – 2 kolone */}
+<div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:w-5/5 mx-[25%]">
+
+
+      {[3, 4].map((i) => (
+        <div key={i} className="relative text-center">
+          <div className="relative">
+            <div className="text-9xl font-extrabold text-[#fae914]">
+              {content[i].number}
+            </div>
+            <h3 className="absolute inset-0 flex items-center justify-center font-bold uppercase text-[19px] text-black whitespace-nowrap px-2">
+  {content[i].title}
+</h3>
+          </div>
+          <p className="mt-8 text-base">{content[i].text}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</div>
+<div className="bg-white py-10 flex justify-center items-center relative">
+  <div className="container mx-auto px-4 flex flex-col md:flex-row items-start w-full">
+    {/* Left Section (3/5 width, divided into two parts) */}
+<div className="w-full md:w-3/5 flex flex-col md:flex-row gap-4">
+  {/* Left Part (Two Images Stacked) */}
+  <div className="w-full md:w-1/2 flex flex-col gap-4 relative">
+  <img
+    src={bg_01}
+    alt="Taxi Booking"
+    className="rounded-lg object-cover w-full h-[400px] md:h-[600px] absolute top-[-200px] z-10"
+  />
+<img
+  src={bg_21}
+  alt="Mobile App"
+
+ className="rounded-lg object-cover w-80 h-80 md:h-60 relative z-0 mt-[370px] md:mt-[420px] self-end"
+/>
+
+</div>
+
+  {/* Right Part (One Image aligned to right and top, 5px from bg_21) */}
+  <div className="w-full md:w-1/2 flex justify-end items-start">
+    <img src={bg_31} alt="Wheelchair Access" className="rounded-lg object-cover h-48 md:h-[40rem]" />
+  </div>
+</div>
+
+    {/* Right Section (2/5 width) */}
+    <div className="w-full h-full  md:w-2/5 flex justify-center items-center ml-4 md:ml-6">
+  <div className="text-center md:text-left max-w-md">
+    <h2 className="text-3xl font-bold mb-4">ORDER TAXI TODAY</h2>
+    <p className="text-gray-600 mb-4">
+      With the taxiout app, you can travel safely from A to B – wherever you are. Are
+      you traveling by wheelchair or need help elsewhere? No problem, we take your
+      individual requests into account.
+    </p>
+    <button className="bg-yellow-400 text-black font-semibold py-2 px-6 rounded-lg hover:bg-yellow-500">
+      LEARN MORE
+    </button>
+  </div>
+</div>
+
+  </div>
+</div>
+<div className="bg-white  w-full  flex justify-center items-center">
+  <img src={city} alt="TaxiScout24" className="max-w-full h-auto" />
+</div>
+
         <AppDownloadButtons />
       </div>
     </>
