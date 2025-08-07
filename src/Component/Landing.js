@@ -20,7 +20,6 @@ import bg_21 from "../Images/slika3.jpg";
 import city from "../Images/footer_city.png";
 import app_store from "../Images/app-store-live.jpg";
 import google_play from "../Images/play-store-live.jpg";
-
 import bgImage from "../Images/map_bg.jpg";
 import ChatPopup from "./chatPopup";
 import AppDownloadButtons from "./AppDownloadButtons";
