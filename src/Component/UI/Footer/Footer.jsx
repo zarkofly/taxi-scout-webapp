@@ -1,26 +1,134 @@
+import React, { useContext, useState } from "react";
+import { Typography } from "@material-tailwind/react";
+import logo from "../../../Images/logo2.png";
+import logopink from "../../../Images/logopink.png";
+import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import "./signup.css";
+import { LadyTaxiContext } from "../../LadyTaxiContext"; // Dodaj ovaj import
+// Ostali importi ostaju isti
+export function Footer() {
+  const { t } = useTranslation();
+  const { isLadyTaxi, setIsLadyTaxi } = useContext(LadyTaxiContext); // Koristi kontekst
+  const LINKS = [
+    {
+      title: t("company"),
+      items: [
+        { name: t("about_us"), slug: "about-us" },
+        { name: t("our_partners"), slug: "our-partner" },
+        { name: t("pricing"), slug: "pricing" },
+        { name: t("our_team"), slug: "our-team" },
+        { name: t("gallery"), slug: "gallery" },
+      ],
+    },
+    {
+      title: t("resource"),
+      items: [
+        { name: t("how_we_work"), slug: "how-it-works" },
+        { name: t("blogs"), slug: "blogs" },
+      ],
+    },
+    {
+      title: t("contact"),
+      items: [
+        { name: t("contact_us"), slug: "contact" },
+        { name: t("faqs"), slug: "faq" },
+        { name: t("privacy_policy"), slug: "privacy-policy" },
+        { name: t("terms_of_use"), slug: "term-of-use" },
+        { name: t("terms_of_services"), slug: "term-of-services" },
+      ],
+    },
+  ];
+
+  const currentYear = new Date().getFullYear();
+
+  return (
+    <footer className="relative w-full bg-[#2c2c2c] overflow-x-hidden">
+      <div className="mx-auto w-full max-w-7xl px-4 sm:px-8">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 centar">
+        <Link to="/" className="w-full max-w-[12rem] md:w-48">
+            <img src={isLadyTaxi ? logopink : logo} alt="logo" className="w-full h-auto" />
+          </Link>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            {LINKS.map(({ title, items }) => (
+              <ul key={title}>
+                <Typography
+                  as="a"
+                  href="#"
+                  color="white"
+                  className="py-2 font-semibold transition-colors hover:text-blue-gray-900"
+                >
+                  {title}
+                </Typography>
+                {items.map((link) => (
+                  <li key={link.name}>
+                    <Typography
+                      variant="small"
+                      color="white"
+                      className="mb-1 font-medium opacity-80"
+                    >
+                      <Link to={link.slug}>{link.name}</Link>
+                    </Typography>
+                  </li>
+                ))}
+              </ul>
+            ))}
+          </div>
+        </div>
+        <div className="mt-12 flex w-full flex-col items-center justify-center border-t border-blue-gray-50 py-4 md:flex-row md:justify-between">
+          <Typography
+            variant="small"
+            className="mb-4 text-center font-normal text-white md:mb-0"
+          >
+            © {currentYear} <a href="https://material-tailwind.com/">Taxi Scout24.</a>{" "}
+            {t("all_rights_reserved")}
+          </Typography>
+          <div className="flex gap-4 text-blue-gray-900 sm:justify-center">
+            {/* Social media ikone ostaju iste */}
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+}
+
+
+
+
+
+///////////////STARI FOOTER///////////////////////////
+/*
 import { Typography } from "@material-tailwind/react";
 import logo from "../../../Images/logo2.png"
 import { Link } from "react-router-dom";
- 
+import { useTranslation } from "react-i18next";
+
+
+
+export function Footer() {
+  const { t } = useTranslation();
 const LINKS = [
+
+ 
   {
-    title: "Company",
-    items: [{name:"About Us",slug:"about-us"},{name: "Our Partners", slug:"our-partner"}, {name:"Pricing", slug:"pricing"}, {name:"Our Team" , slug:"our-team"} , {name:"Gallery", slug:"gallery"}],
+    title: t('company'),
+    items: [{name:t('about_us'),slug:"about-us"},{name: t('our_partners'), slug:"our-partner"}, {name:t('pricing'), slug:"pricing"}, {name:t('our_team') , slug:"our-team"} , {name:t('gallery'), slug:"gallery"}],
   },
   {
-    title: "Resource",
-    items: [{name:"How We Work",slug:"how-it-works"},{name :"Blogs" , slug : "blogs"}],
+    title: t('resource'),
+    items: [{name: t('how_we_work'),slug:"how-it-works"},{name :t('blogs') , slug : "blogs"}],
   },
   {
-    title: "Contact",
-    items: [{name:"Contact Us", slug: "contact"}, {name:"FAQs" , slug : "faq"},{name: "Privacy Policy" , slug:"privacy-policy"}, {name:"Terms Of Use", slug: "term-of-use"} , {name:"Terms Of Services", slug: "term-of-services"}],
+    title: t('contact'),
+    items: [{name:t('contact_us'), slug: "contact"}, {name:t('faqs') , slug : "faq"},{name: t('privacy_policy') , slug:"privacy-policy"}, {name:t('terms_of_use'), slug: "term-of-use"} , {name:t('terms_of_services'), slug: "term-of-services"}],
   },
 ];
  
 const currentYear = new Date().getFullYear();
  
-export function Footer() {
+
   return (
+    
     <footer className="relative w-full bg-[#2c2c2c] ">
       <div className="mx-auto w-full max-w-7xl px-8">
         <div className="grid grid-cols-1 justify-between gap-4 md:grid-cols-2">
@@ -57,8 +165,7 @@ export function Footer() {
             variant="small"
             className="mb-4 text-center font-normal text-white md:mb-0"
           >
-            &copy; {currentYear} <a href="https://material-tailwind.com/">Taxi Scout24</a>. All
-            Rights Reserved.
+            &copy; {currentYear} <a href="https://material-tailwind.com/">Taxi Scout24.</a> {t('all_rights_reserved')}
           </Typography>
           <div className="flex gap-4 text-blue-gray-900 sm:justify-center">
             <Typography as="a" href="#" className="opacity-80 transition-opacity hover:opacity-100">
@@ -108,3 +215,4 @@ export function Footer() {
     </footer>
   );
 }
+*/
