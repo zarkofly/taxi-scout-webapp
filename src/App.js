@@ -52,6 +52,7 @@ import { LadyTaxiContext } from "./Component/LadyTaxiContext"; // Dodaj LadyTaxi
 import bgImage from "./Images/map_bg.jpg";
 
 function App() {
+  
   const { t } = useTranslation();
   const [token, setToken] = useState(null);
   const [isLadyTaxi, setIsLadyTaxi] = useState(() => {
