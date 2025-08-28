@@ -44,7 +44,7 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import CookieConsentPopup from "./Component/CookieConsentPopup";
 import "./Component/i18n";
-import { UserContext } from "./Context/UserContext";
+import { UserContext } from "./context/UserContext";
 import { useTranslation } from "react-i18next";
 import Rides from "./Component/Rides";
 import { LadyTaxiContext } from "./Component/LadyTaxiContext"; // Dodaj LadyTaxiContext
