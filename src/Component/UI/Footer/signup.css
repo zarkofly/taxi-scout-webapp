@@ -1,0 +1,1224 @@
+/* Stilizacija za osnovni tekst */
+#text1, #text2, #text3, #text4 {
+    position: relative; /* Potrebno za apsolutno pozicioniranje linije */
+    cursor: pointer;    /* Menja kursor kada pređete mišem preko */
+}
+
+/* Dodavanje efekta linije ispod teksta */
+#text1::after,
+#text2::after,
+#text3::after,
+#text4::after {
+    content: '';                /* Pseudo-element za liniju */
+    position: absolute;         
+    width: 0;                   /* Početna širina linije */
+    height: 2px;                /* Debljina linije */
+    background-color: black;    /* Boja linije */
+    bottom: 0;                  /* Pozicioniranje na dno */
+    left: 0;                    /* Početak sa leve strane */
+    transition: width 0.3s;     /* Animacija širenja linije */
+}
+
+/* Efekat kada pređete mišem preko elementa */
+#text1:hover::after,
+#text2:hover::after,
+#text3:hover::after,
+#text4:hover::after {
+    width: 100%; /* Povećava širinu linije na 100% */
+}
+
+#opis {
+    height: 30vh; 
+    width: 100%;
+    padding: 0.5vh;
+    text-align: left;
+    resize: none; /* Onemogućava promenu veličine polja */
+    box-sizing: border-box; /* Uklanja problem sa paddingom */
+}
+
+#opis::placeholder {
+    text-align: left;
+}
+.dva-elementa {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Razmak između input polja i checkbox-a */
+}
+.dva-elementa1 {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Razmak između input polja i checkbox-a */
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    font-size: 18px; /* Prilagodite veličinu teksta po potrebi */
+}
+.custom-checkbox {
+    width: 20px; /* Povećanje širine checkbox-a */
+    height: 20px; /* Povećanje visine checkbox-a */
+}
+#cena{
+     width: 63%;
+      margin-right: 80px;
+    
+}
+#brojsasije {
+    text-transform: uppercase; /* Pretvara tekst u velika slova */
+}
+.dashed-div {
+    border: 2px dashed rgb(178, 178, 178); /* Isprekidani border */
+    border-radius: 15px; /* Zaobljene ivice */
+    height: 45vh; /* Visina 60% ekrana (možete prilagoditi) */
+    width: 100%; /* Širina 100% ekrana */
+    background-color: #FAFAFA; /* Pozadinska boja */
+    margin-top: 20px; /* Razmak iznad isprekidanog div-a */
+    box-sizing: border-box; /* Uključuje padding u širinu div-a */
+    display: flex; /* Omogućava centriranje sadržaja unutar div-a */
+    justify-content: center; /* Horizontalno centriranje sadržaja */
+    align-items: center; /* Vertikalno centriranje sadržaja */
+}
+.photo-button {
+    background-color: #596B80; /* Boja pozadine dugmeta */
+    color: white; /* Bela boja za tekst */
+    border: none; /* Bez okvira */
+        width: auto;
+    height: auto;
+    border-radius: 5px; /* Zaobljene ivice */
+    padding: 10px 20px; /* Unutrašnji razmak */
+    font-size: 16px; /* Veličina fonta */
+    cursor: pointer; /* Kursor u obliku ruke pri pregledu */
+    display: flex; /* Koristi flexbox za poravnanje ikone i teksta */
+    align-items: center; /* Vertikalno poravnanje ikone i teksta */
+    margin: 0; /* Uklanja marginu */
+}
+.photo-button i {
+    margin-right: 10px; /* Razmak između ikone i teksta */
+}
+  .photo-dugme{
+   display: flex
+;
+        height: 100%;
+        width: 100%;
+        justify-content: center;
+        /* justify-items: center; */
+        align-items: center;
+    }
+.dugme-div-desno {
+    display: flex; /* Dodajte ovu liniju */
+    justify-content: flex-end; /* Dodajte ovu liniju */
+    width: 100%;
+}
+.button {
+    background-color: red; /* Crvena pozadina */
+    color: white; /* Bele boje za tekst */
+    border: none; /* Bez okvira */
+    border-radius: 20px; /* Zaobljene ivice */
+    padding: 10px 0px; /* Unutrašnji razmak */
+    font-size: 16px; /* Veličina fonta */
+    cursor: pointer; /* Kursor u obliku ruke pri pregledu */
+    width: 10%; /* Širina 1/3 roditelja */
+    margin-top: 5px; /* Gornji margin */
+}
+.button2 {
+    background-color: white;
+    color: #596B80;
+    border: 1px solid #596B80; /* Okvir iste boje kao tekst */
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 5px;
+      font-weight: bold; /* Dodaje bold tekst */
+}
+
+.error {
+    border: 1px solid red !important;
+    color: red !important;
+}
+
+/* Stil za input */
+.dropdown1 {
+    width: 100%;
+    padding: 10px; /* Dodatni padding sa gornje strane */
+    border: 1px solid rgb(178, 178, 178);
+    border-radius: 5px;
+    background-color: white;
+    font-size: 20px;
+    color: black;
+    box-sizing: border-box;
+    margin-top: 10px;
+    transition: padding 0.2s ease;
+     outline: none;
+     margin-bottom: 30px;
+}
+
+.dropdown1:focus {
+    outline: none;
+    border-color: #4a90e2;
+}
+/* Stil za input */
+.dropdown2 {
+    width: 100%;
+    padding: 10px; /* Dodatni padding sa gornje strane */
+    border: 1px solid rgb(178, 178, 178);
+    border-radius: 5px;
+    background-color: white;
+    font-size: 20px;
+    color: black;
+    box-sizing: border-box;
+    margin-top: 10px;
+    transition: padding 0.2s ease;
+     outline: none;
+     margin-bottom: 30px;
+}
+
+.dropdown2 :focus {
+    outline: none;
+    border-color: #4a90e2;
+}
+
+.oglas-view{
+    position: relative;
+    width: 25%;
+    height: 100%;
+    display: inline-block;
+}
+
+         .breadcrumb-area {
+            padding-top: 1px; 
+            padding-bottom: 120px;
+        }
+        .container1 {
+            display: flex;
+            align-items: center;
+        }
+        .circle {
+            width: 40px;
+            height: 40px;
+            color:white;
+            border: 1px solid white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 10px;
+            position: relative;
+        }
+        .line {
+            width: 10%; /* Možeš podesiti dužinu linije ako je potrebno */
+            height: 2px;
+            background-color: white;
+            margin-right: 5px;
+        }
+        .label {
+            color:white;
+            text-align: center;
+            margin-top: 5px;
+            font-size: 18px;
+        }
+        .first-circle {
+            background-color: black; /* Crna boja za prvi krug */
+            color: white; /* Bele boje za tekst broja */
+        }
+        .first-label {
+            color: black; /* Crna boja za tekst "start" kod prvog kruga */
+            font-size: 18px;
+        }
+        
+        .rounded-div {
+          margin-top: -70px;
+            margin-bottom: 200px;
+            border: 1px solid rgb(178, 178, 178); /* Crni border od 1px */
+            border-radius: 15px; /* Zaobljene ivice */
+            height: 70vh; /* Visina 70% ekrana */
+            width: 80vw; /* Širina 60% ekrana */
+            background-color: #FAFAFA; /* Pozadinska boja */
+            display: flex; /* Fleksibilno poravnanje sadržaja */
+            flex-direction: column; /* Osigurava da se sadržaj prikazuje u kolonama */
+          
+            padding: 20px;
+        }
+          .rounded-div1 {
+            border: 1px solid rgb(178, 178, 178); /* Crni border od 1px */
+            border-radius: 15px; /* Zaobljene ivice */
+            height: 100%; /* Visina 70% ekrana */
+            width: 60vw; /* Širina 66% ekrana */
+            background-color: #FAFAFA; /* Pozadinska boja */
+            display: block; /* Omogućava centriranje sadržaja unutar div-a */
+            align-items: flex-start; /* Vertikalno poravnanje na vrh */
+            justify-content: flex-start; /* Horizontalno poravnanje na levo */
+            padding: 20px; /* Razmak unutar div-a */
+        }
+        .title {
+            color: black; /* Crna boja za naslov */
+            font-weight: bold; /* Podebljan tekst */
+            font-size: 1.5rem; /* Veličina fonta */
+            margin-bottom: 10px; /* Razmak ispod naslova */
+            text-align: left;
+        }
+        .description {
+            color: rgb(178, 178, 178); /* Boja teksta za opis */
+            font-size: 18px; /* Veličina fonta */
+            text-align: left;
+        }
+        .body1 {
+            margin: 0; /* Uklanja podrazumevane margine */
+             margin-bottom: 50px;
+            display: flex; /* Koristi Flexbox za centriranje div-a */
+            align-items: center; /* Vertikalno centrira div */
+            justify-content: center; /* Horizontalno centrira div */
+        }
+        #imageContainer {
+    display: block;
+
+    margin: 0; /* Uklanja marginu */
+       padding-top: 10px;
+    border: 1px solid #ccc; /* Dodaje sivi border */
+    position: relative; /* Omogućava postavljanje X dugmeta */
+}
+
+.naslovna-slika-text {
+    text-align: left; /* Poravnanje teksta skroz levo */
+    font-weight: bold;
+    margin: 0; /* Uklanja marginu */
+    padding: 0; /* Uklanja padding */
+}
+
+
+#additionalImages {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 10px; /* Razmak između teksta i slika */
+    box-sizing: border-box;
+}
+
+/* Stil za kontejner malih slika */
+.small-image-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 kolone */
+    grid-template-rows: repeat(2, 1fr);    /* 2 reda */
+    gap: 5px; /* Razmak između slika */
+    width: 100%;
+    height: calc(100% - 40px); /* Visina prilagođena uzimajući u obzir visinu teksta */
+}
+
+/* Stil za svaki image-box */
+.image-box {
+    background-color: #F0F0F0; /* Siva pozadina */
+    border: 1px solid #ccc; /* Sivi border */
+    border-radius: 10px; /* Zaobljeni ivice */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+/* Stil za dugme + */
+.add-image-button {
+    position: absolute;  /* Omogućava pozicioniranje u odnosu na roditelja */
+    top: 50%;            /* Centriranje vertikalno */
+    left: 50%;           /* Centriranje horizontalno */
+    transform: translate(-50%, -50%); /* Korekcija za savršeno centriranje */
+    background-color: #B0B0B0; /* Siva pozadina dugmeta */
+    color: white; /* Bela boja za znak + */
+    border: none; /* Bez okvira */
+    border-radius: 50%; /* Okrugli oblik */
+    width: 30px;  /* Širina dugmeta */
+    height: 30px; /* Visina dugmeta */
+    font-size: 18px;  /* Veličina teksta za znak + */
+    display: flex;  /* Koristi flexbox da bi tekst bio centriran */
+    align-items: center;  /* Vertikalno centriranje */
+    justify-content: center;  /* Horizontalno centriranje */
+    cursor: pointer;  /* Kursor u obliku ruke */
+}
+
+
+
+/* Stil za prikaz sličice */
+.preview-thumbnail {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: 1px solid #ccc;
+}
+.remove-button {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background-color: gray;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.8;
+    transition: opacity 0.2s;
+}
+
+.remove-button:hover {
+    opacity: 1;
+}
+
+
+
+.add-image-button:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+dl {
+  display: grid;          /* Koristi Grid layout */
+
+  row-gap: 10px;          /* Razmak između redova */
+  column-gap: 20px;       /* Razmak između kolona */
+  margin: 0;
+  padding: 0;
+   grid-template-columns: 1fr 1fr; /* Dve kolone, svaka zauzima 50% */
+}
+
+dt {
+    color: #424242;
+    width:100%;
+  font-size: 20px;
+  text-align: left;  
+  font-weight: 100;
+
+}
+
+dd {
+    color: #424242;
+  margin: 0;
+    font-size: 20px;
+   text-align: left; 
+    width:100%;
+      
+}
+
+
+
+
+.inner-box {
+  border: 1px solid rgb(229, 229, 229); /* Crna ivica debljine 2px */
+  padding: 5px;         /* Razmak unutar ivice */
+  margin: 5px;          /* Razmak između unutrašnjeg i spoljnog diva */
+
+}
+.inner-box2 {
+ 
+  padding: 5px;         /* Razmak unutar ivice */
+  margin: 5px;          /* Razmak između unutrašnjeg i spoljnog diva */
+
+}
+
+.detalj {
+     width:100%;
+  display: flex;
+  justify-content: space-between; /* Razmak između div-ova */
+align-items: flex-start;
+  gap: 10px; /* Razmak između elemenata */
+}
+
+.box {
+ width:100%;
+
+  padding: 20px;
+  flex: 1; /* Fleksibilna širina (opciono) */
+  text-align: center; /* Centriranje teksta unutar box-a */
+}
+.box1 {
+ width:100%;
+
+  padding: 20px;
+  flex: 1; /* Fleksibilna širina (opciono) */
+  text-align: left; /* Centriranje teksta unutar box-a */
+}
+.box2 {
+ width:100%;
+
+  padding: 20px;
+  flex: 1; /* Fleksibilna širina (opciono) */
+  text-align: right; /* Centriranje teksta unutar box-a */
+}
+
+
+  .gallery {
+    text-align: center;
+    margin: 20px auto;
+    max-width: 700px;
+    position: relative;
+      border-bottom: 1px solid rgb(229, 229, 229);
+  }
+
+  .gallery__display {
+  
+    margin-bottom: 20px;
+    position: relative;
+  width: 100%; /* Ili željena širina */
+  max-width: 800px; /* Maksimalna širina galerije */
+  height: 500px; /* Željena visina */
+  margin: auto;
+  overflow: hidden; /* Sprečava prelivanje slike */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f0f0f0; /* Pozadinska boja (opciono) */
+  }
+
+
+#large-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Za prilagodbu slike */
+}
+  .gallery__display img {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .gallery__nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    font-size: 24px;
+    cursor: pointer;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s;
+  }
+
+  .gallery__nav:hover {
+    background: rgba(0, 0, 0, 0.8);
+  }
+
+  .gallery__nav--left {
+    left: 10px;
+  }
+
+  .gallery__nav--right {
+    right: 10px;
+  }
+
+  .gallery__thumbnails {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+  }
+
+  .gallery__thumb {
+    cursor: pointer;
+    width: 100px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 5px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+
+  .gallery__thumb:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  }
+
+
+
+
+
+
+
+.title-detalji {
+    font-weight: 700;
+    color: #424242;
+    font-size: 30px;
+    margin: 0.5rem 0px 0.875rem;
+    border-bottom: 1px solid rgb(229, 229, 229);
+    line-height: 1.6;
+    padding: 0px;
+    overflow: hidden;
+  
+    width: 90%;
+    height: fit-content;
+  
+}
+.mui-style-1wbsr0r {
+    margin-top: auto;
+    display: flex;
+    flex-direction: row;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    padding-left: 0.75rem;
+}
+@media (min-width: 800px) {
+    .mui-style-1ckh8ip {
+        display: block;
+    }
+}
+.mui-style-1ckh8ip {
+    line-height: 1.3rem;
+    max-height: 2.6rem;
+    margin: 0px;
+    overflow: hidden;
+    color: rgb(51, 51, 51);
+    display: block;
+    word-break: break-word;
+}
+.mui-style-urxrw6 {
+    font-weight: 700;
+    padding-right: 1.85rem;
+    display: inline-flex;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    color: rgb(77, 77, 77);
+    pointer-events: none;
+    margin: 0.25rem 0px 0.5rem;
+    overflow: hidden;
+}
+
+.mui-style-1wn422t {
+    flex: 1 1 0%;
+    padding-left: 0.75rem;
+    max-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.mui-style-epvm6 {
+    white-space: nowrap;
+}
+.mui-style-uzxn2f {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.mui-style-so5exi {
+    display: flex;
+    overflow: hidden;
+    z-index: 20;
+}
+.mui-style-6wlkoa {
+    font-size: 0.75rem;
+    padding-left: 0.75rem;
+    padding-right: 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    overflow: hidden;
+}
+    .mui-style-1juzk6v {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    position: relative;
+    text-align: left;
+    margin-left: 1px;
+    overflow: hidden;
+}
+    .primeroglasa {
+            width: 100%;
+    height: 30vh;
+    background-color: white;
+    border-color: gray;
+    border: 1px solid rgb(178, 178, 178);
+    display: flex;
+
+    }
+     .primeroglasa2 {
+            width: 100%;
+    height: 100%;
+    background-color: white;
+    border-color: gray;
+    border: 1px solid rgb(178, 178, 178);
+    display: block;
+    justify-items: center;
+
+    }
+     .primeroglasa3 {
+   
+            width: 100%;
+    height: 100%;
+    background-color: white;
+    border-color: gray;
+    border: 1px solid rgb(178, 178, 178);
+    display: flex;
+    justify-items: center;
+
+    }
+        .primeroglasa1 {
+           
+    height: 30vh;
+    background-color: white;
+   
+
+    }
+    .twodiv {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    margin-top: 5vh;
+ 
+}
+
+.left-text {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.right-text {
+    font-size: 16px;
+    color: #007bff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.right-text i {
+    margin-left: 5px; /* Razmak između teksta i ikone */
+}
+@media (max-width: 768px) {
+   .circle {
+    width: 20px;
+    height: 20px;
+    margin: 0;
+} 
+ 
+ .first-label {
+    font-size: 12px;
+}  
+.label {
+    color: rgb(178, 178, 178);
+    text-align: center;
+    margin-top: 5px;
+    font-size: 12px;
+}
+.rounded-div {
+  
+    width: 98vw;
+    height: auto;
+    margin-bottom: 20px;
+    margin-top: 25%;
+   
+}
+.rounded-div1 {
+  
+    width: 98vw;
+   
+}
+.button {
+      width: 20%;
+       padding: 10px 0px; 
+   }
+    .button1 {
+        width: 25%;
+    }
+   .dva-elementa {
+    display: flex;
+    align-items: center;
+    gap: 0px;
+}
+   .dva-elementa1 {
+    display: block;
+    align-items: center;
+    gap: 0px;
+}
+    
+   #additionalImages{
+           width: 100% !important;
+    height: 100% !important;
+  
+ 
+   }
+   #imageContainer{
+       width: 100% !important;
+    height: 100% !important;
+
+   }
+   .dashed-div { 
+       display:block;
+   }
+    .photo-dugme{
+   display: flex
+;
+        height: 100%;
+        width: 100%;
+        justify-content: center;
+        /* justify-items: center; */
+        align-items: center;
+    }
+    .rounded-div1 {
+    border: 1px solid rgb(178, 178, 178);
+    border-radius: 15px;
+    height: 100%;
+    width: 98vw;
+    background-color: #FAFAFA;
+    display: block;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 20px;
+}
+
+
+.primeroglasa {
+    width: 100%;
+    height: 17vh;
+    background-color: white;
+    border-color: gray;
+    border: 1px solid rgb(178, 178, 178);
+    display: flex
+;
+}
+
+.box1 {
+ width:100%;
+
+  padding: 0px;
+  flex: 1; /* Fleksibilna širina (opciono) */
+  text-align: left; /* Centriranje teksta unutar box-a */
+}
+.box2 {
+ width:100%;
+
+  padding: 0px;
+  flex: 1; /* Fleksibilna širina (opciono) */
+  text-align: right; /* Centriranje teksta unutar box-a */
+}
+#icon-email{
+    font-size: 20px !important;
+}
+#vidiemail{
+    font-size:14px !important;
+}
+#icon-phone{
+    font-size: 20px !important;
+}
+#vidiphone{
+    font-size:14px !important;
+}
+.oglas-view{
+    position: relative;
+    width: 50%;
+    height: 100%;
+    display: inline-block;
+}
+    .pay-div {
+        display: block !important;
+       
+    }
+    .pay-item {
+   
+    margin-bottom: 20px;
+}
+
+
+}
+
+
+.glavna{
+    justify-items: center;
+    overflow-y: auto;
+}
+.button-container {
+    display: flex;
+    justify-content: center; /* Centriranje dugmadi */
+    gap: 40px; /* Razmak između dugmadi */
+    margin-top: 30px; /* Razmak od opisa */
+}
+
+.signup-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 100px;
+    border: none;
+    background-color: white;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    color: black;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.signup-button:hover {
+    transform: scale(1.05); /* Efekat povećanja na hover */
+}
+
+.button-icon {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 10px; /* Razmak između slike i teksta */
+}
+
+.pay-item {
+    flex: 1; /* Svaki div zauzima jednaku širinu */
+    background-color: white;
+    height: 100%; /* Visina svakog diva */
+    border: 1px solid #ddd; /* Opcionalno, okvir oko svakog diva */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Opcionalno, senka za bolji izgled */
+        justify-content: center;
+      align-items: center;
+      text-align: center;
+}
+.pay-div {
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-between; /* Razmak između elemenata */
+    gap: 20px; /* Alternativni način za razmak između elemenata */
+    background-color: #f5f5f5; /* Opcionalno, pozadina glavnog diva */
+    padding: 10px; /* Opcionalno, unutrašnja margina glavnog diva */
+  
+}
+.titlePay {
+    text-align: center; /* Centriranje teksta horizontalno */
+    font-weight: bold; /* Boldovanje teksta */
+    display: flex; /* Aktivira fleksibilni layout za lakše vertikalno centriranje */
+    justify-content: center; /* Centriranje horizontalno */
+    align-items: center; /* Centriranje vertikalno */
+   font-size: 18px;
+  
+   
+}
+.price{
+    font-size: 100px;
+}
+.driver-container {
+    display: flex; /* Postavlja elemente u horizontalni raspored */
+    align-items: center; /* Vertikalno poravnanje u sredini */
+  }
+  .buy-button1 {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    background-color:#ffa500;
+    border: 1px solid #ffa500;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    width: 90%;
+    transition: background-color 0.3s, color 0.3s;
+    margin-top: 20px;
+      margin-bottom: 10px;
+  }
+  html, body {
+    height: 100%;
+    overflow-y: auto;
+  }  
+  
+  /* Ensure .completed overrides other styles */
+  .circle.completed {
+    background-color: #34c759 !important; /* Green background with higher specificity */
+    color: #fff; /* White checkmark */
+  }
+  
+  /* Default label styling */
+  .label {
+    color: #000; /* Black text by default */
+  }
+  
+  /* Green label for completed step */
+  .label.text-green-500 {
+    color: #34c759; /* Green text */
+  }
+  .bg-blue-600 {
+    color: #ffffff;
+    background-color: #2563eb;
+    border-radius: 0.375rem;
+    transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform;
+    transition-duration: 150ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.bg-blue-600:hover {
+    background-color: #1d4ed8;
+}
+
+.transition {
+    transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform;
+    transition-duration: 150ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f9f9f9;
+    color: #333;
+  }
+  
+  .intro {
+    text-align: center;
+    padding: 2rem;
+    background: #fff;
+  }
+  
+  .intro h1 {
+    margin-bottom: 1rem;
+    font-size: 2rem;
+    color: #111;
+  }
+  
+  .intro p {
+    margin: 0.5rem 0;
+    font-size: 1rem;
+  }
+  
+  .pricing {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+    padding: 2rem;
+  }
+  
+  .plan {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    padding: 1.5rem;
+    width: 280px;
+    text-align: center;
+  }
+  
+  .plan h2 {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .plan .price {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #000;
+  }
+  
+  .plan .price span {
+    font-size: 0.9rem;
+    color: #555;
+  }
+ .spanclass{
+  font-size: 1rem !important;
+ }
+  .plan ul {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+    margin: 1rem 0;
+  }
+  
+  .plan ul li {
+    padding: 0.3rem 0;
+    font-size: 0.95rem;
+  }
+  
+  button {
+    background-color: #FACC15;
+    color: black;
+    border: none;
+    padding: 0.6rem 1rem;
+    font-size: 1rem;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+ button:hover {
+    background-color: #FACC15;
+  }
+  
+  @media (max-width: 768px) {
+    .pricing {
+      flex-direction: column;
+      align-items: center;
+    }
+    .button-container {
+      display: block;
+      justify-content: center; /* Centriranje dugmadi */
+      gap: 40px; /* Razmak između dugmadi */
+      margin-top: 30px; /* Razmak od opisa */
+  }
+
+  .intro {
+
+    padding: 0rem;
+    width: 100%;
+  
+  }
+  }
+  /* Opšti kontejner */
+#paket {
+    padding: 2rem;
+    background-color: #f9f9f9;
+    border-radius: 16px;
+    font-family: Arial, sans-serif;
+
+  }
+  
+  /* Uvodni tekst */
+  .intro {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .intro h1 {
+    font-size: 1.8rem;
+    color: #222;
+  }
+  
+  .intro p {
+    font-size: 1rem;
+    color: #444;
+  }
+  
+  /* Sekcija sa paketima */
+  .pricing {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+  }
+  
+  /* Jedan paket */
+  .plan {
+    background-color: #fff;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    transition: transform 0.2s ease;
+  }
+  
+  .plan:hover {
+    transform: translateY(-5px);
+  }
+  
+  .plan h2 {
+    margin-top: 0;
+    font-size: 1.4rem;
+    color: #111;
+  }
+  
+  .radio-options {
+    margin: 1rem 0;
+  }
+  
+  .radio-options label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    font-size: 14px;
+    cursor: pointer;
+    color: #333;
+  }
+  
+  .radio-options input[type="radio"] {
+    margin-right: 0.5rem;
+    
+  }
+  
+  /* Lista stavki */
+  .plan ul {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
+  }
+  
+  .plan ul li {
+    margin-bottom: 0.4rem;
+    font-size: 0.95rem;
+    color: #333;
+  }
+  
+  /* Dugme na dnu */
+  .plan button {
+    display: block;
+    width: 100%;
+    background-color: #007bff;
+    margin-top: 5px;
+    color: white;
+    padding: 0.6rem 1rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .plan button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Mobilni prikaz */
+  @media (max-width: 768px) {
+    .centar{
+      justify-items: anchor-center ;
+    }
+    .signup-button {
+width: 100%;
+    }
+    .spad {
+      display:  none;
+    }
+    .pricing {
+      flex-direction: column;
+      align-items: center;
+      padding: 0rem;
+    }
+  
+    .plan {
+      width: 100%;
+    }
+    .input-field {
+      width: 100%;
+      font-size: smaller;
+    }
+  }
+  .buttons .btn-monthly {
+    background-color: #FFA500;
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .buttons .btn-monthly:hover {
+    background-color: #e69500;
+  }
+  
+  .buttons .btn-yearly {
+    background-color: #2563eb;
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .buttons .btn-yearly:hover {
+    background-color: #1d4ed8;
+  }
+  
