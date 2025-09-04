@@ -31,6 +31,7 @@ import { LadyTaxiContext } from "./LadyTaxiContext"; // Dodaj ovaj import
 import { LadyTaxiExplanation } from "./LadyTaxiExplanation";
 import Slider from "./Slider"; // Import the Slider component
 
+
 const Landing = () => {
   const { t } = useTranslation();
   const { isLadyTaxi, setIsLadyTaxi } = useContext(LadyTaxiContext); // Koristi kontekst
