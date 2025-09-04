@@ -8,6 +8,7 @@
 
 
 
+
   .slider-wrapper {
     display: flex;
     animation: slide 20s linear infinite; /* Adjusted duration for smooth continuous sliding */
@@ -104,4 +105,5 @@
     }
 
   }
+
 
