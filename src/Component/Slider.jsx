@@ -9,6 +9,7 @@ const Slider = ({ isLadyTaxi }) => {
   const sliderRef = useRef(null);
 
   
+  
   // Function to format image URLs
   const getImageUrl = (image) => {
     if (!image) return "https://via.placeholder.com/100?text=No+Image";
@@ -73,3 +74,4 @@ const Slider = ({ isLadyTaxi }) => {
 
 
 export default Slider;
+
