@@ -1,0 +1,103 @@
+.slider-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    margin-top: 4rem; /* mt-16 to push below header (adjust if header height differs) */
+    padding: 1rem 0; /* py-4 equivalent */
+  }
+  
+  .slider-wrapper {
+    display: flex;
+    animation: slide 20s linear infinite; /* Adjusted duration for smooth continuous sliding */
+  }
+  
+  .slider-slide {
+    flex: 0 0 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 5px; /* Reduced padding for smaller images */
+  }
+  .slider-title {
+    font-size: 1.875rem; /* text-3xl equivalent */
+    font-weight: 700; /* font-bold equivalent */
+    text-align: center;
+    margin-bottom: 1rem; /* mb-4 equivalent */
+    color: #000; /* Match Landing.jsx text color */
+  }
+  .slider-image {
+    width: 100%;
+    height: 100px; /* Smaller images */
+    object-fit: cover;
+    border-radius: 0.5rem; /* rounded-lg equivalent */
+  }
+  
+  .slider-caption {
+    margin-top: 0.5rem; /* mt-2 equivalent */
+    text-align: center;
+    font-size: 0.75rem; /* text-xs equivalent */
+    font-weight: 500; /* font-medium equivalent */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+  }
+  
+  .slider-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 0.25rem 0.5rem; /* Smaller buttons */
+    cursor: pointer;
+    font-size: 1rem; /* Smaller arrows */
+    z-index: 10;
+    opacity: 0; /* Hide buttons by default */
+    transition: opacity 0.3s;
+  }
+  
+  .slider-container:hover .slider-button {
+    opacity: 1; /* Show buttons on hover */
+  }
+  
+  .slider-button.prev {
+    left: 5px;
+  }
+  
+  .slider-button.next {
+    right: 5px;
+  }
+  
+  .slider-button:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+  
+  @keyframes slide {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%); /* Move to halfway point for seamless loop */
+    }
+  }
+  
+  /* Responsive breakpoints */
+  @media (min-width: 640px) {
+    .slider-slide {
+      flex: 0 0 50%; /* 2 slides */
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .slider-slide {
+      flex: 0 0 16.67%; /* 6 slides */
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .slider-slide {
+      flex: 0 0 12.5%; /* 8 slides */
+    }
+  }
