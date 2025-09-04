@@ -4,6 +4,7 @@
     cursor: pointer;    /* Menja kursor kada pređete mišem preko */
 }
 
+
 /* Dodavanje efekta linije ispod teksta */
 #text1::after,
 #text2::after,
@@ -1219,4 +1220,5 @@ width: 100%;
     background-color: #1d4ed8;
   }
   
+
 
