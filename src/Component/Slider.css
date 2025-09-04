@@ -5,7 +5,8 @@
     margin-top: 4rem; /* mt-16 to push below header (adjust if header height differs) */
     padding: 1rem 0; /* py-4 equivalent */
   }
-  
+
+
   .slider-wrapper {
     display: flex;
     animation: slide 20s linear infinite; /* Adjusted duration for smooth continuous sliding */
@@ -100,4 +101,5 @@
     .slider-slide {
       flex: 0 0 12.5%; /* 8 slides */
     }
+
   }
