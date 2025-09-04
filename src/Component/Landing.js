@@ -29,7 +29,7 @@ import LoginPopup from "./LoginPopup";
 import "./landing.css";
 import { LadyTaxiContext } from "./LadyTaxiContext"; // Dodaj ovaj import
 import { LadyTaxiExplanation } from "./LadyTaxiExplanation";
-// Ostali importi ostaju isti
+import Slider from "./Slider"; // Import the Slider component
 
 const Landing = () => {
   const { t } = useTranslation();
@@ -113,6 +113,7 @@ const Landing = () => {
         referrerpolicy="no-referrer"
       />
       <div className={`pt-3 sm:pt-5 sm:mt-0 md:py-1 ${isLadyTaxi ? 'bg-pink-500/30' : 'bg-gray-100'}`}>
+    <Slider isLadyTaxi={isLadyTaxi} /> {/* Slider inserted here */}
       <div className={`pb-5 sm:pb-6 md:container px-2 flex justify-center items-center gap-10 container ${isLadyTaxi ? 'bg-transparent' : 'bg-gray-100'}`}>     <div className="px-2 flex flex-col-reverse justify-center items-center lg:container lg:w-1/2 lg:flex-col gap-3">
             <div className="flex flex-col">
               <h1 className="uppercase font-semibold text-lg sm:text-xl md:text-2xl lg:text-4xl">
