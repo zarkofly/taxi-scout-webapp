@@ -314,7 +314,7 @@ const Landing = () => {
             </div>
             <div className="w-full h-full md:w-2/5 flex justify-center items-center ml-4 md:ml-6">
               <div className="text-center md:text-left max-w-md">
-                <h2 className="text-3xl font-bold mb-4">ORDER TAXI TODAY</h2>
+                <h1 className="text-3xl font-bold mb-4">ORDER TAXI TODAY</h1>
                 <p className="text-gray-600 mb-4">
                   With the taxiout app, you can travel safely from A to B – wherever you are. Are
                   you traveling by wheelchair or need help elsewhere? No problem, we take your
